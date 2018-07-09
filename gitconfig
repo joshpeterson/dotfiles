@@ -1,0 +1,19 @@
+[user]
+	name = Josh Peterson
+	email = petersonjm1@gmail.com
+[diff]
+	compactionHeuristic = true
+[pager]
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
+[interactive]
+	diffFilter = diff-highlight
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
