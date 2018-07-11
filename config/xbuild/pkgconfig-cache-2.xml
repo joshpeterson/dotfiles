@@ -1,0 +1,73 @@
+<PcFileCache>
+  <File path="/usr/share/pkgconfig/adwaita-icon-theme.pc" lastWriteTime="2016-08-01T05:36:59-04:00" />
+  <File path="/usr/share/pkgconfig/bash-completion.pc" lastWriteTime="2016-05-20T07:11:19-04:00" />
+  <File path="/usr/share/pkgconfig/iso-codes.pc" lastWriteTime="2016-08-02T08:02:39-04:00" />
+  <File path="/usr/share/pkgconfig/shared-mime-info.pc" lastWriteTime="2016-09-07T16:34:52-04:00" />
+  <File path="/usr/share/pkgconfig/systemd.pc" lastWriteTime="2016-10-26T07:11:33-04:00" />
+  <File path="/usr/share/pkgconfig/udev.pc" lastWriteTime="2016-10-26T07:11:33-04:00" />
+  <File path="/usr/share/pkgconfig/usbutils.pc" lastWriteTime="2015-10-23T17:56:46-04:00" />
+  <File path="/usr/share/pkgconfig/xkeyboard-config.pc" lastWriteTime="2016-05-24T04:02:42-04:00" />
+  <File path="/usr/lib/pkgconfig/aspnetwebstack.pc" lastWriteTime="2016-11-21T07:16:56-05:00" name="aspnetwebstack" version="4.6.2" description="References Microsoft ASP.NET Web Stack">
+    <Assembly name="System.Web.Razor" version="2.0.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/gac/System.Web.Razor/2.0.0.0__31bf3856ad364e35/System.Web.Razor.dll" />
+    <Assembly name="System.Web.Http" version="4.0.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/gac/System.Web.Http/4.0.0.0__31bf3856ad364e35/System.Web.Http.dll" />
+    <Assembly name="System.Web.WebPages" version="2.0.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/gac/System.Web.WebPages/2.0.0.0__31bf3856ad364e35/System.Web.WebPages.dll" />
+    <Assembly name="System.Web.WebPages.Razor" version="2.0.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/gac/System.Web.WebPages.Razor/2.0.0.0__31bf3856ad364e35/System.Web.WebPages.Razor.dll" />
+    <Assembly name="System.Web.WebPages.Deployment" version="2.0.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/gac/System.Web.WebPages.Deployment/2.0.0.0__31bf3856ad364e35/System.Web.WebPages.Deployment.dll" />
+  </File>
+  <File path="/usr/lib/pkgconfig/cecil.pc" lastWriteTime="2016-11-21T07:16:56-05:00" name="cecil" version="4.6.2" description="Mono Internal Libraries -- Do not use">
+    <Assembly name="Mono.Cecil" version="0.9.5.0" culture="neutral" publicKeyToken="0738eb9f132ed756" file="/usr/lib/mono/gac/Mono.Cecil/0.9.5.0__0738eb9f132ed756/Mono.Cecil.dll" />
+  </File>
+  <File path="/usr/lib/pkgconfig/dotnet.pc" lastWriteTime="2016-11-21T07:16:56-05:00" />
+  <File path="/usr/lib/pkgconfig/dotnet35.pc" lastWriteTime="2016-11-21T07:16:56-05:00" />
+  <File path="/usr/lib/pkgconfig/libgdiplus.pc" lastWriteTime="2016-04-23T07:45:01-04:00" />
+  <File path="/usr/lib/pkgconfig/mono-2.pc" lastWriteTime="2016-11-21T07:16:56-05:00" />
+  <File path="/usr/lib/pkgconfig/mono-cairo.pc" lastWriteTime="2016-11-21T07:16:56-05:00" />
+  <File path="/usr/lib/pkgconfig/mono-lineeditor.pc" lastWriteTime="2016-11-21T07:16:56-05:00" />
+  <File path="/usr/lib/pkgconfig/mono-nunit.pc" lastWriteTime="2015-06-29T06:46:03-04:00" name="mono-nunit" version="2.6.3" description="Testing framework for CLI" gacPackage="false">
+    <Assembly name="nunit.core" version="2.6.4.0" culture="neutral" publicKeyToken="96d09a1eb7f44a77" file="/usr/lib/cli/nunit.core-2.6.3/nunit.core.dll" />
+    <Assembly name="nunit.util" version="2.6.4.0" culture="neutral" publicKeyToken="96d09a1eb7f44a77" file="/usr/lib/cli/nunit.util-2.6.3/nunit.util.dll" />
+    <Assembly name="nunit.framework" version="2.6.4.0" culture="neutral" publicKeyToken="96d09a1eb7f44a77" file="/usr/lib/cli/nunit.framework-2.6.3/nunit.framework.dll" />
+    <Assembly name="nunit.core.interfaces" version="2.6.4.0" culture="neutral" publicKeyToken="96d09a1eb7f44a77" file="/usr/lib/cli/nunit.core.interfaces-2.6.3/nunit.core.interfaces.dll" />
+    <Assembly name="nunit.mocks" version="2.6.4.0" culture="neutral" publicKeyToken="96d09a1eb7f44a77" file="/usr/lib/cli/nunit.mocks-2.6.3/nunit.mocks.dll" />
+    <Assembly name="nunit-console-runner" version="2.6.4.0" culture="neutral" publicKeyToken="96d09a1eb7f44a77" file="/usr/lib/cli/nunit-console-runner-2.6.3/nunit-console-runner.dll" />
+  </File>
+  <File path="/usr/lib/pkgconfig/mono-options.pc" lastWriteTime="2016-11-21T07:16:56-05:00" />
+  <File path="/usr/lib/pkgconfig/mono.pc" lastWriteTime="2016-11-21T07:16:56-05:00" />
+  <File path="/usr/lib/pkgconfig/monodoc.pc" lastWriteTime="2016-11-21T07:16:56-05:00" name="monodoc" version="4.6.2" description="Monodoc - Mono Documentation Tools">
+    <Assembly name="monodoc" version="1.0.0.0" culture="neutral" publicKeyToken="0738eb9f132ed756" file="/usr/lib/mono/monodoc/monodoc.dll" />
+  </File>
+  <File path="/usr/lib/pkgconfig/nunit.pc" lastWriteTime="2015-06-29T06:46:03-04:00" name="nunit" version="2.6.3" description="Testing framework for CLI" gacPackage="false">
+    <Assembly name="nunit.core" version="2.6.4.0" culture="neutral" publicKeyToken="96d09a1eb7f44a77" file="/usr/lib/cli/nunit.core-2.6.3/nunit.core.dll" />
+    <Assembly name="nunit.util" version="2.6.4.0" culture="neutral" publicKeyToken="96d09a1eb7f44a77" file="/usr/lib/cli/nunit.util-2.6.3/nunit.util.dll" />
+    <Assembly name="nunit.framework" version="2.6.4.0" culture="neutral" publicKeyToken="96d09a1eb7f44a77" file="/usr/lib/cli/nunit.framework-2.6.3/nunit.framework.dll" />
+    <Assembly name="nunit.core.interfaces" version="2.6.4.0" culture="neutral" publicKeyToken="96d09a1eb7f44a77" file="/usr/lib/cli/nunit.core.interfaces-2.6.3/nunit.core.interfaces.dll" />
+    <Assembly name="nunit.mocks" version="2.6.4.0" culture="neutral" publicKeyToken="96d09a1eb7f44a77" file="/usr/lib/cli/nunit.mocks-2.6.3/nunit.mocks.dll" />
+    <Assembly name="nunit-console-runner" version="2.6.4.0" culture="neutral" publicKeyToken="96d09a1eb7f44a77" file="/usr/lib/cli/nunit-console-runner-2.6.3/nunit-console-runner.dll" />
+  </File>
+  <File path="/usr/lib/pkgconfig/reactive.pc" lastWriteTime="2016-11-21T07:16:56-05:00" name="reactive" version="4.6.2" description="Reactive Extensions">
+    <Assembly name="System.Reactive.Interfaces" version="2.2.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/4.5/System.Reactive.Interfaces.dll" />
+    <Assembly name="System.Reactive.Core" version="2.2.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/4.5/System.Reactive.Core.dll" />
+    <Assembly name="System.Reactive.Linq" version="2.2.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/4.5/System.Reactive.Linq.dll" />
+    <Assembly name="System.Reactive.PlatformServices" version="2.2.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/4.5/System.Reactive.PlatformServices.dll" />
+    <Assembly name="System.Reactive.Providers" version="2.2.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/4.5/System.Reactive.Providers.dll" />
+    <Assembly name="System.Reactive.Debugger" version="2.2.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/4.5/System.Reactive.Debugger.dll" />
+    <Assembly name="System.Reactive.Experimental" version="2.2.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/4.5/System.Reactive.Experimental.dll" />
+    <Assembly name="System.Reactive.Runtime.Remoting" version="2.2.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/4.5/System.Reactive.Runtime.Remoting.dll" />
+  </File>
+  <File path="/usr/lib/pkgconfig/system.web.extensions.design_1.0.pc" lastWriteTime="2016-11-21T07:16:56-05:00" />
+  <File path="/usr/lib/pkgconfig/system.web.extensions_1.0.pc" lastWriteTime="2016-11-21T07:16:56-05:00" />
+  <File path="/usr/lib/pkgconfig/system.web.mvc.pc" lastWriteTime="2016-11-21T07:16:56-05:00" />
+  <File path="/usr/lib/pkgconfig/system.web.mvc2.pc" lastWriteTime="2016-11-21T07:16:56-05:00" />
+  <File path="/usr/lib/pkgconfig/system.web.mvc3.pc" lastWriteTime="2016-11-21T07:16:56-05:00" name="system.web.mvc3" version="3.0.0.0" description="System.Web.Mvc - ASP.NET MVC v3">
+    <Assembly name="System.Web.Mvc" version="3.0.0.0" culture="neutral" publicKeyToken="31bf3856ad364e35" file="/usr/lib/mono/gac/System.Web.Mvc/3.0.0.0__31bf3856ad364e35/System.Web.Mvc.dll" />
+  </File>
+  <File path="/usr/lib/pkgconfig/wcf.pc" lastWriteTime="2016-11-21T07:16:56-05:00" />
+  <File path="/usr/lib/pkgconfig/xbuild12.pc" lastWriteTime="2016-11-21T07:16:56-05:00" name="xbuild12" version="12.0" description="XBuild/MSBuild 12.0">
+    <Assembly name="Microsoft.Build.Engine" version="12.0.0.0" culture="neutral" publicKeyToken="b03f5f7f11d50a3a" file="/usr/lib/mono/xbuild/12.0/bin/Microsoft.Build.Engine.dll" />
+    <Assembly name="Microsoft.Build.Framework" version="12.0.0.0" culture="neutral" publicKeyToken="b03f5f7f11d50a3a" file="/usr/lib/mono/xbuild/12.0/bin/Microsoft.Build.Framework.dll" />
+    <Assembly name="Microsoft.Build.Tasks.v12.0" version="12.0.0.0" culture="neutral" publicKeyToken="b03f5f7f11d50a3a" file="/usr/lib/mono/xbuild/12.0/bin/Microsoft.Build.Tasks.v12.0.dll" />
+    <Assembly name="Microsoft.Build.Utilities.v12.0" version="12.0.0.0" culture="neutral" publicKeyToken="b03f5f7f11d50a3a" file="/usr/lib/mono/xbuild/12.0/bin/Microsoft.Build.Utilities.v12.0.dll" />
+    <Assembly name="Microsoft.Build" version="12.0.0.0" culture="neutral" publicKeyToken="b03f5f7f11d50a3a" file="/usr/lib/mono/xbuild/12.0/bin/Microsoft.Build.dll" />
+  </File>
+  <File path="/usr/lib/pkgconfig/monosgen-2.pc" lastWriteTime="2016-11-21T07:16:56-05:00" />
+</PcFileCache>

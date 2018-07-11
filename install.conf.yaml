@@ -12,5 +12,8 @@
     ~/bin:
         path: bin/
         create: true
+    ~/.config:
+        path: config/
+        create: true
 
 
