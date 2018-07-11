@@ -4,6 +4,7 @@
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
     ~/.gdbinit: gdbinit
+    ~/.lldbinit: lldbinit
     ~/.vim:
         path: vim/
         create: true
