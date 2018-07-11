@@ -3,6 +3,7 @@
 - link:
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
+    ~/.gdbinit: gdbinit
     ~/.vim:
         path: vim/
         create: true
