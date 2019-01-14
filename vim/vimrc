@@ -28,6 +28,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'vim-scripts/a.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 " For Rust
 Plugin 'rust-lang/rust.vim'
 " General
@@ -209,6 +210,7 @@ match ErrorMsg '\%>83v.\+' "Highlight characters after 80 columns
 au BufNew,BufRead *.html match none
 au BufNew,BufRead *.yml match none
 au BufNew,BufRead *.md match none
+au BufNew,BufRead .vimrc match none
 au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell " spell check in commit messages
 set wildignore+=*.o,*.swp,*.swo,*/vendor/*,*/tmp/*,*/cde-package/*
 autocmd QuickFixCmdPost *grep* cwindow
@@ -273,10 +275,12 @@ let g:rustfmt_autosave = 1
 "YCM Keymappings
 map <F9> :YcmCompleter FixIt<CR>
 map <F12> :YcmCompleter GoTo<CR>
+" Remove YCM checking in vim ui
+let g:ycm_show_diagnostics_ui = 0
 
 "FZF Stuff
 "This command seems to miss some files - I'm not sure why, so remove it for now
-"let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.hg,build,artifacts}/*" 2> /dev/null'
+let $FZF_DEFAULT_COMMAND='rg --files --hidden --follow -g "!{.hg,build,artifacts,thirdparty}/*" 2> /dev/null'
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
 nnoremap <c-t> :FZF<cr>
@@ -287,3 +291,8 @@ set clipboard=unnamed
 "Buffer switching
 nnoremap <c-p> :bp<cr>
 nnoremap <c-n> :bn<cr>
+
+set background=dark
+
+" Add the git branch to the default statusline
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P

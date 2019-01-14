@@ -43,3 +43,6 @@ AOT
 runtimes
 ARMv7
 dll
+CMake
+llvm
+typedef

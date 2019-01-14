@@ -45,9 +45,7 @@ root: .
 windows:
   - Editor:
       layout: cd97,168x49,0,0{85x49,0,0,0,82x49,86,0,1}
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
       panes:
         - vim
-        - bundle exec guard
+        - ./tools/watch
+  - Scratch:
