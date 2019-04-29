@@ -42,6 +42,8 @@ Plugin 'szw/vim-tags'
 Plugin 'yssl/QFEnter'
 Plugin 'junegunn/fzf.vim'
 Plugin 'jremmen/vim-ripgrep'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
 "
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -296,3 +298,7 @@ set background=dark
 
 " Add the git branch to the default statusline
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+"vim-session settings
+let g:session_autosave = 'yes'
+let g:session_autoload = 'yes'
