@@ -46,3 +46,5 @@ dll
 CMake
 llvm
 typedef
+Emscripten
+macOS
