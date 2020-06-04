@@ -17,3 +17,9 @@
 	br = branch
 	ci = commit
 	st = status
+  local-branches = !git branch -vv | cut -c 3- | awk '$3 !~/\\[/ { print $1 }'
+  merged-branches = !git branch --merged master | grep -v master
+[push]
+	default = current
+[fetch]
+	prune = true
