@@ -1,6 +1,13 @@
-set -gx PATH ~/bin ~/.cargo/bin /home/josh/emsdk /home/josh/emsdk/node/12.9.1_64bit/bin /home/josh/emsdk/upstream/emscripten $PATH
-set -gx EDITOR vim
-set -g fish_prompt_pwd_dir_length 0
-set -g theme_newline_cursor yes
-set -g theme_color_scheme solarized-dark
-rvm default
+set -x JEROME_DATABASE_PASSWORD mydata
+set -x VCPKG_FORCE_SYSTEM_BINARIES 1
+set -x EDITOR nvim
+
+alias ls "exa --icons"
+alias bat batcat
+alias tx tmuxinator
+
+# NNN
+export NNN_PLUG='p:preview-tui;o:fzopen;f:finder'
+export NNN_FCOLORS='0000E6310000000000000000'
+alias nnn "nnn -e"
+set --export NNN_FIFO "/tmp/nnn.fifo"

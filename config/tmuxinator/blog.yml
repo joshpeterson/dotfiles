@@ -1,23 +1,28 @@
-# /home/josh/.config/tmuxinator/debugger.yml
+# /home/josh/.config/tmuxinator/fun.yml
 
-name: debugger
-root: .
+name: fun
+root: ~/
 
 # Optional tmux socket
 # socket_name: foo
 
-# Runs before everything. Use it to start daemons etc.
-# pre: sudo /etc/rc.d/mysqld start
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
 
 # Project hooks
+
 # Runs on project start, always
 # on_project_start: command
+
 # Run on project start, the first time
 # on_project_first_start: command
+
 # Run on project start, after the first time
 # on_project_restart: command
+
 # Run on project exit ( detaching from tmux session )
 # on_project_exit: command
+
 # Run on project stop
 # on_project_stop: command
 
@@ -33,25 +38,20 @@ root: .
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
 # startup_window: editor
 
-# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set
 # startup_pane: 1
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
 
-# Runs after everything. Use it to attach to tmux with custom options etc.
-# post: tmux -CC attach -t debugger
-
 windows:
-  - local:
-      layout: 1967,168x49,0,0[168x24,0,0{84x24,0,0,0,83x24,85,0,9},168x24,0,25{84x24,0,25,5,83x24,85,25[83x9,85,25,6,83x7,85,35,7,83x6,85,43,8]}]
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
+  - blaise:
+      layout: 40b3,362x94,0,0{181x94,0,0,2,180x94,182,0[180x47,182,0,3,180x46,182,48,4]}
+      root: ~/code/joshpeterson.github.io
       panes:
-        - voltron view command 'source list -a $rip -c 50' --lexer cpp
-        - voltron view disasm
-        - lldb
-        - voltron view bt
-        - voltron view reg --horizontal
-        - voltron view break
+        - nvim
+        - bundle exec jekyll serve --drafts
+        - git st
+  - nnn:
+      - nnn
+  - scratch:
