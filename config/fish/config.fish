@@ -1,10 +1,6 @@
-set -x JEROME_DATABASE_PASSWORD mydata
-set -x VCPKG_FORCE_SYSTEM_BINARIES 1
 set -x EDITOR nvim
 
-alias ls "exa --icons"
 alias bat batcat
-alias tx tmuxinator
 
 # NNN
 export NNN_PLUG='p:preview-tui;o:fzopen;f:finder'
