@@ -11,8 +11,9 @@
     ~/bin:
         path: bin/
         create: true
-    ~/.config:
-        path: config/
+    ~/.config/fish:
+        path: config/fish
         create: true
+        force: true
 
 
