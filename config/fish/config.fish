@@ -1,6 +1,7 @@
 set -x EDITOR nvim
 
 alias bat batcat
+alias fd fdfind
 
 # NNN
 export NNN_PLUG='p:preview-tui;o:fzopen;f:finder'
