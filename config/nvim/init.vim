@@ -1,4 +1,4 @@
-call plug#begin('~/AppData/Local/nvim/plugged')
+call plug#begin()
 " below are some vim plugins for demonstration purpose.
 " add the plugin you want to use here.
 Plug 'iCyMind/NeoSolarized'
