@@ -3,9 +3,6 @@
 - link:
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
-    ~/.vim:
-        path: vim/
-        create: true
     ~/.vimrc:
         path: vim/vimrc
         create: true
