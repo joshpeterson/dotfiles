@@ -2,7 +2,8 @@ set -x JEROME_DATABASE_PASSWORD mydata
 set -x VCPKG_FORCE_SYSTEM_BINARIES 1
 set -x EDITOR nvim
 
-alias ls "exa --icons"
+# Remove exa for now as it is difficult to install in codespaces
+# alias ls "exa --icons"
 alias bat batcat
 alias tx tmuxinator
 
