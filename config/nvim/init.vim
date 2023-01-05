@@ -17,6 +17,8 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'tpope/vim-fugitive'
 
 Plug 'ryanoasis/vim-devicons'
+
+Plug 'rhysd/vim-clang-format'
 call plug#end()
 
 " Basic settings
@@ -73,6 +75,9 @@ let g:bufExplorerSplitHorzSize=6
 " Buffer switching
 nnoremap <c-p> :bp<cr>
 nnoremap <c-n> :bn<cr>
+
+" vim-clang-format
+let g:clang_format#auto_format = 1
 
 " Older settings
 " set runtimepath^=~/.vim runtimepath+=~/.vim/after
