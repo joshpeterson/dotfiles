@@ -19,6 +19,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'rhysd/vim-clang-format'
+
+Plug 'github/copilot.vim'
 call plug#end()
 
 " Basic settings
