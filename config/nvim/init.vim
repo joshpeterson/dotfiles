@@ -21,6 +21,10 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'rhysd/vim-clang-format'
 
 Plug 'github/copilot.vim'
+
+Plug 'jamespwilliams/bat.vim'
+
+Plug 'anuvyklack/pretty-fold.nvim'
 call plug#end()
 
 " Basic settings
@@ -63,7 +67,8 @@ nnoremap <c-t> :FZF<cr>
 
 " NERDTree
 " Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+"autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+let g:NERDTreeWinSize=45
 
 nnoremap <leader>n :NERDTreeToggle<CR>
 
@@ -80,6 +85,27 @@ nnoremap <c-n> :bn<cr>
 
 " vim-clang-format
 let g:clang_format#auto_format = 1
+
+" Use syntac highlighting from bat
+set termguicolors
+colorscheme bat
+
+" Github Copilot
+imap <silent> <C-j> <Plug>(copilot-next)
+imap <silent> <C-k> <Plug>(copilot-previous)
+imap <silent> <C-\> <Plug>(copilot-dismiss)
+
+" Ferret
+let g:FerretExecutableArguments = {
+  \   'ag': '--vimgrep --width=4096 --ignore-dir=external/'
+  \ }
+
+" Folding
+require('pretty-fold').ft_setup('cpp', {
+   matchup_patterns = {
+       { '^%s*TEST_CASE', 'i^}$' }, -- TEST_CASE blocks
+   },
+}
 
 " Older settings
 " set runtimepath^=~/.vim runtimepath+=~/.vim/after

@@ -1,6 +1,7 @@
 set -x JEROME_DATABASE_PASSWORD mydata
 set -x VCPKG_FORCE_SYSTEM_BINARIES 1
 set -x EDITOR nvim
+set -x PATH $PATH ~/bin ~/.cargo/bin
 
 set -g theme_newline_cursor yes
 

@@ -1,7 +1,7 @@
-# /home/josh/.config/tmuxinator/fun.yml
+# /home/josh/.config/tmuxinator/mu.yml
 
-name: fun
-root: ~/
+name: mu
+root: /workspaces/mu
 
 # Optional tmux socket
 # socket_name: foo
@@ -47,12 +47,10 @@ root: ~/
 windows:
   - mu:
       layout: 40b3,362x94,0,0{181x94,0,0,2,180x94,182,0[180x47,182,0,3,180x46,182,48,4]}
-      root: ~/code/mu
+      root: /workspaces/mu
       panes:
         - nvim
-        - ag -l | entr -s 'time ./build.sh'
+        - ./watch.sh
         - git st
-  - nnn:
-      - nnn
   - scratch:
-      root: ~/code/mu
+      root: /workspaces/mu
