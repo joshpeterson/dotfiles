@@ -9,9 +9,14 @@ set -g theme_newline_cursor yes
 # alias ls "exa --icons"
 alias bat batcat
 alias tx tmuxinator
+alias vim nvim
 
 # NNN
 export NNN_PLUG='p:preview-tui;o:fzopen;f:finder'
 export NNN_FCOLORS='0000E6310000000000000000'
 alias nnn "nnn -e"
 set --export NNN_FIFO "/tmp/nnn.fifo"
+
+#FZF
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --exclude external'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

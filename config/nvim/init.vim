@@ -23,8 +23,6 @@ Plug 'rhysd/vim-clang-format'
 Plug 'github/copilot.vim'
 
 Plug 'jamespwilliams/bat.vim'
-
-Plug 'anuvyklack/pretty-fold.nvim'
 call plug#end()
 
 " Basic settings
@@ -97,15 +95,25 @@ imap <silent> <C-\> <Plug>(copilot-dismiss)
 
 " Ferret
 let g:FerretExecutableArguments = {
-  \   'ag': '--vimgrep --width=4096 --ignore-dir=external/'
+  \   'ag': '--vimgrep --width=4096 --ignore-dir=external/',
+  \   'rg': '--vimgrep --no-heading --no-config --max-columns 4096 -g !external/'
   \ }
 
 " Folding
-require('pretty-fold').ft_setup('cpp', {
-   matchup_patterns = {
-       { '^%s*TEST_CASE', 'i^}$' }, -- TEST_CASE blocks
-   },
-}
+" The fillchars expression has a trailing space here - that is important.
+set fillchars=fold:\ 
+" Fold all test cases in C++ code by default
+set foldmethod=expr
+set foldexpr=FoldTestCases(v:lnum)
+function! FoldTestCases(lnum)
+    if getline(a:lnum) =~ '^TEST_CASE'
+        return '>1'
+    elseif getline(a:lnum) =~ '^}$'
+        return '<1'
+    else
+        return '='
+    endif
+endfunction
 
 " Older settings
 " set runtimepath^=~/.vim runtimepath+=~/.vim/after

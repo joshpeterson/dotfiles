@@ -4,13 +4,13 @@
 [diff]
 	compactionHeuristic = true
 [pager]
-	log = diff-highlight | less
+    log = diff-highlight | less
 	show = diff-highlight | less
 	diff = diff-highlight | less
-[interactive]
-	diffFilter = diff-highlight
+ [interactive]
+    diffFilter = diff-highlight
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.gitignore_global
 [alias]
 	co = checkout
