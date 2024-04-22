@@ -23,6 +23,10 @@ Plug 'rhysd/vim-clang-format'
 Plug 'github/copilot.vim'
 
 Plug 'jamespwilliams/bat.vim'
+
+Plug 'rhysd/committia.vim'
+
+Plug 'ixru/nvim-markdown'
 call plug#end()
 
 " Basic settings
@@ -114,6 +118,17 @@ function! FoldTestCases(lnum)
         return '='
     endif
 endfunction
+
+" Automatically reload changed files
+set autoread | au CursorHold * checktime | call feedkeys("lh")
+
+augroup auFileTypes
+  autocmd!
+  autocmd FileType markdown setlocal textwidth=80
+augroup end
+
+" Close a buffer without deleting the window
+command Bd bp\|bd \#
 
 " Older settings
 " set runtimepath^=~/.vim runtimepath+=~/.vim/after
