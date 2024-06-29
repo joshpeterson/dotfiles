@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+git ls-files -cdmo --exclude-standard --others | entr -s "echo \"🚧 ════════════════ 🚧\";date \"+%Y-%m-%d %H:%M:%S\";echo \"🚧 ════════════════ 🚧\";josh_build \"$1\" \"$2\"" 2> /dev/null
+#ag -l | entr -s "echo \"🚧 ════════════════ 🚧\";date \"+%Y-%m-%d %H:%M:%S\";echo \"🚧 ════════════════ 🚧\";josh_build $1 $2"

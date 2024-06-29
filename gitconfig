@@ -1,17 +1,16 @@
 [user]
 	name = Josh Peterson
-	email = petersonjm1@gmail.com
+	email = josh@modular.com
 [diff]
 	compactionHeuristic = true
-[pager]
-    log = diff-highlight | less
-	show = diff-highlight | less
-	diff = diff-highlight | less
- [interactive]
-    diffFilter = diff-highlight
+	tool = bc
+	colorMoved = default
+[interactive]
+    	diffFilter = delta --color-only
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore_global
+	pager = delta
 [alias]
 	co = checkout
 	br = branch
@@ -27,3 +26,21 @@
 	rebase = false
 [init]
 	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[difftool "bc"]
+	trustExitCode = true
+[merge]
+	conflictstyle = diff3
+	tool = bc
+[mergetool "bc"]
+	trustExitCode = true
+[remote "origin"]
+	prune = true
+[delta]
+    	navigate = true    # use n and N to move between diff sections
+	line-numbers = true
+	side-by-side = true

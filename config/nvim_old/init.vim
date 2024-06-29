@@ -88,7 +88,7 @@ nnoremap <c-n> :bn<cr>
 " vim-clang-format
 let g:clang_format#auto_format = 1
 
-" Use syntac highlighting from bat
+" Use syntax highlighting from bat
 set termguicolors
 colorscheme bat
 

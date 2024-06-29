@@ -1,0 +1,2 @@
+#!/bin/sh
+rg $1 --files-with-matches | xargs sed -i '' "s~$1~$2~g"
