@@ -24,6 +24,14 @@ set --export NNN_FIFO "/tmp/nnn.fifo"
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --exclude external'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# Bazel at Modular
+alias b="$MODULAR_PATH/bazelw"
+alias bq="$MODULAR_PATH/bazelw query ... | grep"
+alias bb="$MODULAR_PATH/bazelw build"
+alias ibb="ibazel -bazel_path $MODULAR_PATH/bazelw build"
+alias bt="$MODULAR_PATH/bazelw test --test_summary=terse"
+alias ibt="ibazel -bazel_path $MODULAR_PATH/bazelw test --test_summary=terse"
+
 # source ~/start-modular.fish
 
 ### Useful for previwing modular docs
