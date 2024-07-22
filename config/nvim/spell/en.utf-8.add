@@ -3,3 +3,6 @@ llvm
 setBugReportMsg
 GRA
 GenericML
+mlir
+CMake
+Bazel
