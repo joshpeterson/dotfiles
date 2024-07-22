@@ -3,9 +3,6 @@
 - link:
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
-    ~/bin:
-        path: bin/
-        create: true
     ~/.config:
         path: config/
         create: true
