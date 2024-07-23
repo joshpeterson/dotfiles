@@ -1,7 +1,7 @@
 set -x JEROME_DATABASE_PASSWORD mydata
 set -x VCPKG_FORCE_SYSTEM_BINARIES 1
 set -x EDITOR nvim
-set -x PATH $PATH ~/bin ~/.cargo/bin
+set -x PATH $PATH ~/bin ~/.cargo/bin /opt/nvim-linux64/bin
 set -x AWS_PROFILE identity-dev-devaccess-8c21111
 set -x MODULAR_PATH ~/code/modular
 set -x RIPGREP_CONFIG_PATH ~/.config/rg.config
