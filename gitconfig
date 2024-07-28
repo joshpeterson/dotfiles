@@ -3,20 +3,28 @@
 	email = petersonjm1@gmail.com
 [diff]
 	compactionHeuristic = true
-[pager]
-    log = diff-highlight | less
-	show = diff-highlight | less
-	diff = diff-highlight | less
- [interactive]
-    diffFilter = diff-highlight
+    tool = nvimdiff
+    colorMoved = default
+[difftool]
+    prompt = true
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+#[pager]
+#    log = diff-highlight | less
+#	show = diff-highlight | less
+#	diff = diff-highlight | less
+[interactive]
+    diffFilter = delta --color-only
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore_global
+    pager = delta
 [alias]
 	co = checkout
 	br = branch
 	ci = commit
 	st = status
+    cp = cherry-pick
   local-branches = !git branch -vv | cut -c 3- | awk '$3 !~/\\[/ { print $1 }'
   merged-branches = !git branch --merged master | grep -v master
 [push]
@@ -27,3 +35,9 @@
 	rebase = false
 [init]
 	defaultBranch = main
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    side-by-side = true
+[merge]
+    conflictstyle = diff3
