@@ -1,7 +1,7 @@
-# /home/josh/.config/tmuxinator/mu.yml
+# /Users/josh/.config/tmuxinator/whatsfordinner.yml
 
-name: mu
-root: ~/code/mu
+name: whatsfordinner
+root: ~/
 
 # Optional tmux socket
 # socket_name: foo
@@ -38,23 +38,29 @@ root: ~/code/mu
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
 # startup_window: editor
 
-# Specifies (by index) which pane of the specified window will be selected on project startup. If not set
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
 # startup_pane: 1
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
 
 windows:
-  - mu:
+  - Editor:
       layout: 40b3,362x94,0,0{181x94,0,0,2,180x94,182,0[180x47,182,0,3,180x46,182,48,4]}
-      root: ~/code/mu
+      root: ~/code/whatsfordinner
       panes:
         - nvim
-        - ./watch.sh
+        - bundle exec guard
         - git st
-  - git:
-      root: ~/code/mu
+  - Git:
+      root: ~/code/whatsfordinner
       panes:
         - lazygit
-  - scratch:
-      root: ~/code/mu
+  - Rails: 
+      layout: even-vertical
+      root: ~/code/whatsfordinner
+      panes:
+        - bundle exec rails s
+        - tail -f log/development.log
+  - Scratch:
+      root: ~/code/whatsfordinner

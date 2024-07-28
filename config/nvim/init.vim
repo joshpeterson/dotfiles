@@ -23,6 +23,21 @@ Plug 'rhysd/vim-clang-format'
 Plug 'github/copilot.vim'
 
 Plug 'jamespwilliams/bat.vim'
+
+Plug 'numToStr/Comment.nvim'
+
+Plug 'mfussenegger/nvim-dap'
+
+Plug 'kkoomen/vim-doge'
+
+Plug 'rhysd/committia.vim'
+
+Plug 'tpope/vim-abolish'
+
+" Plugins for Ruby
+Plug 'vim-ruby/vim-ruby'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 " Basic settings
@@ -67,6 +82,7 @@ nnoremap <c-t> :FZF<cr>
 " Close the tab if NERDTree is the only window remaining in it.
 "autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 let g:NERDTreeWinSize=45
+let g:NERDTreeShowHidden=1
 
 nnoremap <leader>n :NERDTreeToggle<CR>
 
@@ -92,6 +108,7 @@ colorscheme bat
 imap <silent> <C-j> <Plug>(copilot-next)
 imap <silent> <C-k> <Plug>(copilot-previous)
 imap <silent> <C-\> <Plug>(copilot-dismiss)
+imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
 
 " Ferret
 let g:FerretExecutableArguments = {
@@ -114,6 +131,28 @@ function! FoldTestCases(lnum)
         return '='
     endif
 endfunction
+
+" Initialize Comment.nvim
+lua require('Comment').setup()
+
+" Set the document format to Doxygen for vim-doge
+let g:doge_doc_standard_cpp = 'doxygen_cpp_comment_slash'
+
+" Use standard if available
+if executable('standardrb')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'standardrb',
+        \ 'cmd': ['standardrb', '--lsp'],
+        \ 'allowlist': ['ruby'],
+        \ })
+endif
+
+" More Standard Ruby settings
+let g:ale_linters = {'ruby': ['standardrb']}
+let g:ale_fixers = {'ruby': ['standardrb']}
+let g:ale_fix_on_save = 1
+let g:ruby_indent_assignment_style = 'variable'
+let g:ruby_indent_hanging_elements = 0
 
 " Older settings
 " set runtimepath^=~/.vim runtimepath+=~/.vim/after
