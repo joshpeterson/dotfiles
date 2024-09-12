@@ -3,7 +3,6 @@ set -x VCPKG_FORCE_SYSTEM_BINARIES 1
 set -x EDITOR nvim
 set -x PATH $PATH ~/bin ~/.cargo/bin /opt/nvim-linux64/bin
 set -x AWS_PROFILE identity-dev-devaccess-8c21111
-set -x MODULAR_PATH ~/code/modular
 set -x RIPGREP_CONFIG_PATH ~/.config/rg.config
 
 set -g theme_newline_cursor yes
@@ -25,12 +24,10 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --exclude external'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Bazel at Modular
-alias b="$MODULAR_PATH/bazelw"
-alias bq="$MODULAR_PATH/bazelw query ... | grep"
-alias bb="$MODULAR_PATH/bazelw build"
-alias ibb="ibazel -bazel_path $MODULAR_PATH/bazelw build"
-alias bt="$MODULAR_PATH/bazelw test --test_summary=terse"
-alias ibt="ibazel -bazel_path $MODULAR_PATH/bazelw test --test_summary=terse"
+alias b="./bazelw"
+alias bq="./bazelw query ... | grep"
+alias ibb="ibazel -bazel_path ./bazelw build"
+alias ibt="ibazel -bazel_path ./bazelw test --test_summary=terse"
 
 # source ~/start-modular.fish
 
