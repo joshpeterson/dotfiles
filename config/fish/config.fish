@@ -25,6 +25,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Bazel at Modular
 alias b="./bazelw"
+alias bt="./bazelw test"
 alias bq="./bazelw query ... | grep"
 alias ibb="ibazel -bazel_path ./bazelw build"
 alias ibt="ibazel -bazel_path ./bazelw test --test_summary=terse"
