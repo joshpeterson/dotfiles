@@ -218,22 +218,8 @@ require('lazy').setup({
       { "<leader>n", "<cmd>NnnPicker<cr>", desc = "NnnPicker (floating nnn window)" }
     }
   },
-  'mfussenegger/nvim-dap',
-  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
-
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
-  --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  --
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
-}, {})
+  'diegoulloao/nvim-file-location',
+  {}})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -614,130 +600,21 @@ vim.g.loaded_netrwPlugin = 1
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
--- Debugger integration with lldb
-local dap = require('dap')
-dap.adapters.lldb = {
-  type = 'executable',
-  command = '/Users/josh/code/modular/.derived/third-party/llvm-project/build/bin/lldb-dap', -- adjust as needed, must be absolute path
-  name = 'lldb'
-}
+-- For plugin to copy current file path to clipboard
+-- require plugin
+local status, nvim_file_location = pcall(require, "nvim-file-location")
+if not status then
+  return
+end
 
-dap.configurations.cpp = {
-  {
-    name = 'Launch executable with lldb',
-    type = 'lldb',
-    request = 'launch',
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = function()
-        return vim.fn.input('Arguments: ')
-    end,
-  },
-  {
-    name = 'Launch mo-opt with lldb',
-    type = 'lldb',
-    request = 'launch',
-    program = vim.fn.getcwd() .. '/.derived/build/bin/mo-opt',
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = function()
-        return vim.fn.input('Arguments: ')
-    end,
-  },
-}
-
--- From https://harrisoncramer.me/debugging-in-neovim/
-local dap_ui_ok, ui = pcall(require, "dapui")
- 
-ui.setup({
-  icons = { expanded = "▾", collapsed = "▸" },
-  mappings = {
-    open = "o",
-    remove = "d",
-    edit = "e",
-    repl = "r",
-    toggle = "t",
-  },
-  expand_lines = vim.fn.has("nvim-0.7"),
-  layouts = {
-    {
-      elements = {
-        "scopes",
-        "stacks",
-      },
-      size = 0.3,
-      position = "right"
-    },
-    {
-      elements = {
-        "repl",
-        "breakpoints",
-        "watches",
-      },
-      size = 0.3,
-      position = "bottom",
-    },
-  },
-  floating = {
-    max_height = nil,
-    max_width = nil,
-    border = "single",
-    mappings = {
-      close = { "q", "<Esc>" },
-    },
-  },
-  windows = { indent = 1 },
-  render = {
-    max_type_length = nil,
-  },
+-- custom config
+nvim_file_location.setup({
+  keymap = "<leader>L",
+  mode = "workdir", -- options: workdir | absolute
+  add_line = true,
+  add_column = false,
+  default_register = "*",
 })
-
-local dap_ok, dap = pcall(require, "dap")
-local dap_ui_ok, ui = pcall(require, "dapui")
- 
-vim.fn.sign_define('DapBreakpoint', { text = '🐞' })
- 
--- Start debugging session
-vim.keymap.set("n", "<F6>", function()
-  dap.continue()
-  ui.toggle({})
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false) -- Spaces buffers evenly
-end)
- 
-vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
-vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
-vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
-vim.keymap.set('n', '<S-F10>', function() require('dap').step_out() end)
-vim.keymap.set('n', '<F9>', function() require('dap').toggle_breakpoint() end)
-vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
-vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
-vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
-vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
-vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
-  require('dap.ui.widgets').hover()
-end)
-vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
-  require('dap.ui.widgets').preview()
-end)
-vim.keymap.set('n', '<Leader>df', function()
-  local widgets = require('dap.ui.widgets')
-  widgets.centered_float(widgets.frames)
-end)
-vim.keymap.set('n', '<Leader>dc', function()
-  local widgets = require('dap.ui.widgets')
-  widgets.centered_float(widgets.scopes)
-end)
- 
--- Close debugger and clear breakpoints
-vim.keymap.set("n", "<localleader>de", function()
-  dap.clear_breakpoints()
-  ui.toggle({})
-  dap.terminate()
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
-end)
 
 -- Enable spell check
 vim.opt.spelllang = 'en_us'
