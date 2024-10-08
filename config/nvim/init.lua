@@ -607,7 +607,7 @@ if not status then
   return
 end
 
--- custom config
+-- Configuration for plugin to copy file path to clipboard
 nvim_file_location.setup({
   keymap = "<leader>L",
   mode = "workdir", -- options: workdir | absolute
@@ -619,5 +619,9 @@ nvim_file_location.setup({
 -- Enable spell check
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
+
+vim.filetype.add({ extension = { mojo = 'mojo'} })
+vim.filetype.add({ extension = { mlir = 'mlir'} })
+vim.filetype.add({ extension = { td = 'tablegen'} })
 
 -- vim: ts=2 sts=2 sw=2 et
