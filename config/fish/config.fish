@@ -7,8 +7,7 @@ set -x RIPGREP_CONFIG_PATH ~/.config/rg.config
 
 set -g theme_newline_cursor yes
 
-# Remove exa for now as it is difficult to install in codespaces
-# alias ls "exa --icons"
+alias ls lsd
 alias tx tmuxinator
 alias vim nvim
 
@@ -36,3 +35,6 @@ alias ibt="ibazel -bazel_path ./bazelw test --test_summary=terse"
 #source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_functions.d/chruby.fish
 #source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_conf.d/chruby_auto.fish
 #chruby ruby-3.1.3
+
+# Created by `pipx` on 2024-10-10 14:52:48
+set PATH $PATH /Users/josh/.local/bin
