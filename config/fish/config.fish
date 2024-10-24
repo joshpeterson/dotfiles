@@ -6,6 +6,7 @@ set -x AWS_PROFILE identity-dev-devaccess-8c21111
 set -x RIPGREP_CONFIG_PATH ~/.config/rg.config
 
 set -g theme_newline_cursor yes
+set -g theme_display_go no
 
 alias ls lsd
 alias tx tmuxinator
