@@ -74,7 +74,24 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  {
+    'folke/which-key.nvim',
+    event = "VeryLazy",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    keys = {
+      {
+        "<leader>wk",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
+  },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -87,6 +104,7 @@ require('lazy').setup({
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+      current_line_blame = true,
       on_attach = function(bufnr)
         vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
           { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
@@ -219,11 +237,19 @@ require('lazy').setup({
     }
   },
   'diegoulloao/nvim-file-location',
-  {}})
+  {
+    'Almo7aya/openingh.nvim',
+    keys = {
+      { "<leader>gh", "<cmd>OpenInGHFile<cr>", desc = "Open current file on Github" }
+    }
+
+  },
+  'rcarriga/nvim-notify',
+  {} })
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
--- NOTE: You can change these options as you wish!
+-- NOTE: You can change these options as you w1sh!
 vim.opt.path:append '**'
 
 -- Set highlight on search
@@ -289,6 +315,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 local lga_actions = require("telescope-live-grep-args.actions")
 require('telescope').setup {
   defaults = {
+    layout_strategy = 'vertical',
     mappings = {
       i = {
         ['<C-u>'] = false,
@@ -334,6 +361,11 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>ch', require('telescope.builtin').command_history, { desc = '[C]ommand [H]istory' })
+vim.keymap.set('n', '<leader>fh', require('telescope.builtin').search_history, { desc = '[F]ind [H]istory' })
+vim.keymap.set('n', '<leader>ts', require('telescope.builtin').treesitter, { desc = '[T]ree[S]itter' })
+vim.keymap.set('n', '<leader>qf', require('telescope.builtin').quickfix, { desc = '[Q]uick[F]ix' })
+vim.keymap.set('n', '<leader>qfh', require('telescope.builtin').quickfixhistory, { desc = '[Q]uick[F]ix [H]istory' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -452,7 +484,7 @@ local on_attach = function(client, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 
   vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    pattern = { "*.cpp", "*.h", "*.mojo", "*.py" },
+    pattern = { "*.cpp", "*.h", "*.mojo", "*.py", "*.lua", },
     callback = function()
       if client.supports_method("textDocument/formatting") then
         vim.lsp.buf.format()
@@ -620,8 +652,10 @@ nvim_file_location.setup({
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
 
-vim.filetype.add({ extension = { mojo = 'mojo'} })
-vim.filetype.add({ extension = { mlir = 'mlir'} })
-vim.filetype.add({ extension = { td = 'tablegen'} })
+vim.filetype.add({ extension = { mojo = 'mojo' } })
+vim.filetype.add({ extension = { mlir = 'mlir' } })
+vim.filetype.add({ extension = { td = 'tablegen' } })
+
+require("telescope").load_extension("notify")
 
 -- vim: ts=2 sts=2 sw=2 et
