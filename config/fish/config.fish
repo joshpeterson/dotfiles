@@ -30,7 +30,8 @@ alias bq="./bazelw query ... | grep"
 alias ibb="ibazel -bazel_path ./bazelw build"
 alias ibt="ibazel -bazel_path ./bazelw test --test_summary=terse"
 
-# source ~/start-modular.fish
+# Other Modular aliases
+alias sm="source utils/start-modular.fish"
 
 ### Useful for previwing modular docs
 #source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_functions.d/chruby.fish
