@@ -3,6 +3,7 @@
 - link:
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
+    ~/.lldbinit: lldbinit
     ~/.config:
         path: config/
         create: true
