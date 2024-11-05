@@ -38,9 +38,6 @@ require('lazy').setup({
   -- Buffer deletion without closing splits
   'ojroques/nvim-bufdel',
 
-  -- Mojo syntax highlighting
-  'czheo/mojo.vim',
-
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -77,7 +74,24 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  {
+    'folke/which-key.nvim',
+    event = "VeryLazy",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    keys = {
+      {
+        "<leader>wk",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
+  },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -90,6 +104,7 @@ require('lazy').setup({
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+      current_line_blame = true,
       on_attach = function(bufnr)
         vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
           { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
@@ -221,26 +236,20 @@ require('lazy').setup({
       { "<leader>n", "<cmd>NnnPicker<cr>", desc = "NnnPicker (floating nnn window)" }
     }
   },
-  'mfussenegger/nvim-dap',
-  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
+  'diegoulloao/nvim-file-location',
+  {
+    'Almo7aya/openingh.nvim',
+    keys = {
+      { "<leader>gh", "<cmd>OpenInGHFile<cr>", desc = "Open current file on Github" }
+    }
 
-  -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
-  --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  --
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
-}, {})
+  },
+  'rcarriga/nvim-notify',
+  {} })
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
--- NOTE: You can change these options as you wish!
+-- NOTE: You can change these options as you w1sh!
 vim.opt.path:append '**'
 
 -- Set highlight on search
@@ -306,6 +315,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 local lga_actions = require("telescope-live-grep-args.actions")
 require('telescope').setup {
   defaults = {
+    layout_strategy = 'vertical',
     mappings = {
       i = {
         ['<C-u>'] = false,
@@ -351,6 +361,11 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>ch', require('telescope.builtin').command_history, { desc = '[C]ommand [H]istory' })
+vim.keymap.set('n', '<leader>fh', require('telescope.builtin').search_history, { desc = '[F]ind [H]istory' })
+vim.keymap.set('n', '<leader>ts', require('telescope.builtin').treesitter, { desc = '[T]ree[S]itter' })
+vim.keymap.set('n', '<leader>qf', require('telescope.builtin').quickfix, { desc = '[Q]uick[F]ix' })
+vim.keymap.set('n', '<leader>qfh', require('telescope.builtin').quickfixhistory, { desc = '[Q]uick[F]ix [H]istory' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -469,7 +484,7 @@ local on_attach = function(client, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 
   vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    pattern = { "*.cpp", "*.h", "*.mojo", "*.py" },
+    pattern = { "*.cpp", "*.h", "*.mojo", "*.py", "*.lua", },
     callback = function()
       if client.supports_method("textDocument/formatting") then
         vim.lsp.buf.format()
@@ -528,33 +543,6 @@ mason_lspconfig.setup_handlers {
     }
   end
 }
-
-if vim.env.MODULAR_PATH then
-  require("lspconfig.configs").modular = {
-    default_config = {
-      cmd = { 'modular-lsp-server' },
-      filetypes = { 'mlir' },
-      root_dir = lspconfig.util.root_pattern('.git'),
-    },
-  }
-  require("lspconfig.configs").mojo = {
-    default_config = {
-      cmd = { 'mojo-lsp-server' },
-      filetypes = { 'mojo' },
-      root_dir = lspconfig.util.root_pattern('.git'),
-    },
-  }
-  require("lspconfig.configs").tablegen = {
-    default_config = {
-      cmd = { 'tblgen-lsp-server', '--tablegen-compilation-database=' .. vim.env.MODULAR_PATH .. '/.derived/build/tablegen_compile_commands.yml' },
-      filetypes = { 'tablegen' },
-      root_dir = lspconfig.util.root_pattern('.git'),
-    },
-  }
-  lspconfig.modular.setup({ capabilities = capabilities, on_attach = on_attach })
-  lspconfig.mojo.setup({ capabilities = capabilities, on_attach = on_attach })
-  lspconfig.tablegen.setup({ capabilities = capabilities, on_attach = on_attach })
-end
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
@@ -617,133 +605,30 @@ vim.g.loaded_netrwPlugin = 1
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
--- Debugger integration with lldb
-local dap = require('dap')
-dap.adapters.lldb = {
-  type = 'executable',
-  command = '/Users/josh/code/modular/.derived/third-party/llvm-project/build/bin/lldb-dap', -- adjust as needed, must be absolute path
-  name = 'lldb'
-}
+-- For plugin to copy current file path to clipboard
+-- require plugin
+local status, nvim_file_location = pcall(require, "nvim-file-location")
+if not status then
+  return
+end
 
-dap.configurations.cpp = {
-  {
-    name = 'Launch executable with lldb',
-    type = 'lldb',
-    request = 'launch',
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = function()
-        return vim.fn.input('Arguments: ')
-    end,
-  },
-  {
-    name = 'Launch mo-opt with lldb',
-    type = 'lldb',
-    request = 'launch',
-    program = vim.fn.getcwd() .. '/.derived/build/bin/mo-opt',
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = function()
-        return vim.fn.input('Arguments: ')
-    end,
-  },
-}
-
--- From https://harrisoncramer.me/debugging-in-neovim/
-local dap_ui_ok, ui = pcall(require, "dapui")
- 
-ui.setup({
-  icons = { expanded = "▾", collapsed = "▸" },
-  mappings = {
-    open = "o",
-    remove = "d",
-    edit = "e",
-    repl = "r",
-    toggle = "t",
-  },
-  expand_lines = vim.fn.has("nvim-0.7"),
-  layouts = {
-    {
-      elements = {
-        "scopes",
-        "stacks",
-      },
-      size = 0.3,
-      position = "right"
-    },
-    {
-      elements = {
-        "repl",
-        "breakpoints",
-        "watches",
-      },
-      size = 0.3,
-      position = "bottom",
-    },
-  },
-  floating = {
-    max_height = nil,
-    max_width = nil,
-    border = "single",
-    mappings = {
-      close = { "q", "<Esc>" },
-    },
-  },
-  windows = { indent = 1 },
-  render = {
-    max_type_length = nil,
-  },
+-- Configuration for plugin to copy file path to clipboard
+nvim_file_location.setup({
+  keymap = "<leader>L",
+  mode = "workdir", -- options: workdir | absolute
+  add_line = true,
+  add_column = false,
+  default_register = "*",
 })
-
-local dap_ok, dap = pcall(require, "dap")
-local dap_ui_ok, ui = pcall(require, "dapui")
- 
-vim.fn.sign_define('DapBreakpoint', { text = '🐞' })
- 
--- Start debugging session
-vim.keymap.set("n", "<F6>", function()
-  dap.continue()
-  ui.toggle({})
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false) -- Spaces buffers evenly
-end)
- 
-vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
-vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
-vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
-vim.keymap.set('n', '<S-F10>', function() require('dap').step_out() end)
-vim.keymap.set('n', '<F9>', function() require('dap').toggle_breakpoint() end)
-vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
-vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
-vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
-vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
-vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
-  require('dap.ui.widgets').hover()
-end)
-vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
-  require('dap.ui.widgets').preview()
-end)
-vim.keymap.set('n', '<Leader>df', function()
-  local widgets = require('dap.ui.widgets')
-  widgets.centered_float(widgets.frames)
-end)
-vim.keymap.set('n', '<Leader>dc', function()
-  local widgets = require('dap.ui.widgets')
-  widgets.centered_float(widgets.scopes)
-end)
- 
--- Close debugger and clear breakpoints
-vim.keymap.set("n", "<localleader>de", function()
-  dap.clear_breakpoints()
-  ui.toggle({})
-  dap.terminate()
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
-end)
 
 -- Enable spell check
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
+
+vim.filetype.add({ extension = { mojo = 'mojo' } })
+vim.filetype.add({ extension = { mlir = 'mlir' } })
+vim.filetype.add({ extension = { td = 'tablegen' } })
+
+require("telescope").load_extension("notify")
 
 -- vim: ts=2 sts=2 sw=2 et
