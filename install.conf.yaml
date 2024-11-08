@@ -4,6 +4,7 @@
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
     ~/.lldbinit: lldbinit
+    ~/.zshrc: zshrc
     ~/.config:
         path: config/
         create: true
