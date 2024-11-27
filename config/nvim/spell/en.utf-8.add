@@ -31,3 +31,5 @@ Github
 CamelCase
 bfloat16
 CPUs
+CUDA
+GPUs
