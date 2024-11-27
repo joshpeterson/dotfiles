@@ -124,6 +124,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 alias ls=lsd
 alias vim=nvim
 alias sm="source utils/start-modular.sh"
+alias ibb="ibazel -bazel_path ./bazelw build"
+alias ibt="ibazel -bazel_path ./bazelw test --test_summary=terse"
 
 source <(fzf --zsh)
 
