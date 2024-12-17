@@ -541,6 +541,86 @@ local servers = {
   },
 }
 
+local modular_path = os.getenv("MODULAR_PATH")
+local api_generated_pkgs = vim.fn.expand("$MODULAR_PATH/bazel-bin/SDK/lib/API/python")
+local api_source_pkgs = vim.fn.expand("$MODULAR_PATH/SDK/lib/API/python")
+local pipelines_source_pkgs = vim.fn.expand("$MODULAR_PATH/SDK/public/max-repo/pipelines/python")
+local python_exe = vim.fn.expand("$MODULAR_DERIVED_PATH/autovenv/bin/python")
+local ruff_exe = "/home/ubuntu/.local/share/nvim/mason/packages/python-lsp-server/venv/bin/ruff"
+
+lspconfig.pylsp.setup {
+  on_attach = on_attach,
+  settings = {
+    pylsp = {
+      plugins = {
+        ruff = {
+          enabled = true,         -- Enable the plugin
+          formatEnabled = true,   -- Enable formatting using ruffs formatter
+          executable = ruff_exe,  -- Custom path to ruff
+          -- config = "<path_to_custom_ruff_toml>",  -- Custom config for ruff to use
+          extendSelect = { "I" }, -- Rules that are additionally used by ruff
+          -- extendIgnore = { "C90" },  -- Rules that are additionally ignored by ruff
+          format = { "I" },       -- Rules that are marked as fixable by ruff that should be fixed when running textDocument/formatting
+          -- severities = { ["D212"] = "I" },  -- Optional table of rules where a custom severity is desired
+          unsafeFixes = true,     -- Whether or not to offer unsafe fixes as code actions. Ignored with the "Fix All" action
+          -- Rules that are ignored when a pyproject.toml or ruff.toml is present:
+          lineLength = 80,        -- Line length to pass to ruff checking and formatting
+          -- exclude = { "__about__.py" },  -- Files to be excluded by ruff checking
+          select = { "ALL" },     -- Rules to be enabled by ruff
+          -- Rules to be ignored by ruff:
+          -- D401: imperative docstring.
+          -- D410: blank line after Returns: in docstring.
+          -- COM812: trailing comma missing.
+          -- TD003: missing issue link on the line following this TODO.
+          ignore = { "D401", "D413", "COM812", "TD003" },
+          perFileIgnores = { ["__init__.py"] = "F401" }, -- Rules that should be ignored for specific files
+          preview = true,                                -- Whether to enable the preview style linting and formatting.
+          targetVersion = "py39",                        -- The minimum python version to target (applies for both linting and formatting).
+        },
+        jedi = {
+          environment = python_exe,
+          extra_paths = {
+            api_generated_pkgs,
+            api_source_pkgs,
+            pipelines_source_pkgs,
+          },
+        },
+        -- Type checking.
+        pylsp_mypy = {
+          enabled = true,
+          -- overrides = {
+          --     "--python-executable", python_exe,
+          --     "--show-column-numbers",
+          --     "--show-error-codes",
+          --     "--no-pretty",
+          --     true,
+          -- },
+          -- report_progress = true,
+          -- live_mode = true,
+          config = modular_path .. "/mypy.ini",
+        },
+        pylint = {
+          enabled = false -- Disable pylint to avoid conflicts
+          -- enabled = true,
+          -- executable = "/home/ubuntu/work/modular/.derived/autovenv/bin/pylint",
+        },
+        -- import sorting
+        isort = { enabled = true },
+      },
+    },
+  },
+  flags = {
+    debounce_text_changes = 200,
+  },
+  before_init = function(_, config)
+    local path_to_append = vim.fn.expand(
+      "$MODULAR_PATH/bazel-bin/SDK/lib/API/python:$MODULAR_PATH/SDK/lib/API/python:$MODULAR_PATH/SDK/public/max-repo/pipelines/python")
+    config.env = config.env or {}
+    config.env.PYTHONPATH = ((config.env.PYTHONPATH and (config.env.PYTHONPATH .. ":")) or "") .. path_to_append
+    config.env.MYPYPATH = ((config.env.MYPYPATH and (config.env.MYPYPATH .. ":")) or "") .. path_to_append
+  end
+}
+
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
