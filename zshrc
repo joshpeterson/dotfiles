@@ -138,3 +138,4 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+export PATH="$PATH:/Users/josh/.modular/bin"
