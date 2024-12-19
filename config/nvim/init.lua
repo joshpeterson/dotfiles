@@ -56,7 +56,8 @@ require('lazy').setup({
     -- example using `opts` for defining servers
     opts = {
       servers = {
-        lua_ls = {}
+        lua_ls = {},
+        clangd = {}
       }
     },
     config = function(_, opts)
