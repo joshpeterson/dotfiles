@@ -149,12 +149,6 @@ require('lazy').setup({
         component_separators = '|',
         section_separators = '',
       },
-      sections = {
-        lualine_x = { function()
-          return "Codeium: " ..
-              vim.api.nvim_call_function("codeium#GetStatusString", {})
-        end, 'encoding', 'fileformat', 'filetype' }
-      }
     },
   },
 
@@ -266,17 +260,6 @@ require('lazy').setup({
 
   },
   'rcarriga/nvim-notify',
-  {
-    'Exafunction/codeium.vim',
-    config = function()
-      vim.keymap.set('i', '<C-g>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
-      vim.keymap.set('i', '<C-l>', function() return vim.fn['codeium#CycleCompletions'](1) end,
-        { expr = true, silent = true })
-      vim.keymap.set('i', '<C-h>', function() return vim.fn['codeium#CycleCompletions'](-1) end,
-        { expr = true, silent = true })
-      vim.keymap.set('i', '<C-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
-    end
-  },
   {
     'saghen/blink.cmp',
     lazy = false, -- lazy loading handled internally
