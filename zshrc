@@ -127,6 +127,8 @@ alias sm="source utils/start-modular.sh"
 alias ibb="ibazel -bazel_path ./bazelw build"
 alias ibt="ibazel -bazel_path ./bazelw test --test_summary=terse"
 
+alias bri="bt install;./bazel/generate-compile-commands.sh"
+
 source <(fzf --zsh)
 
 # This way the completion script does not have to parse Bazel's options
