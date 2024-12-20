@@ -91,7 +91,8 @@ return {
 						local api_source_pkgs = vim.fn.expand("$MODULAR_PATH/SDK/lib/API/python")
 						local pipelines_source_pkgs = vim.fn.expand(
 							"$MODULAR_PATH/SDK/public/max-repo/pipelines/python")
-						local python_exe = vim.fn.expand("$MODULAR_DERIVED_PATH/autovenv/bin/python")
+						local python_exe = vim.fn.expand(
+							"$MODULAR_DERIVED_PATH/autovenv/bin/python")
 						local ruff_exe =
 						"/home/ubuntu/.local/share/nvim/mason/packages/python-lsp-server/venv/bin/ruff"
 
@@ -121,8 +122,8 @@ return {
 											-- TD003: missing issue link on the line following this TODO.
 											ignore = { "D401", "D413", "COM812", "TD003" },
 											perFileIgnores = { ["__init__.py"] = "F401" }, -- Rules that should be ignored for specific files
-											preview = true,                     -- Whether to enable the preview style linting and formatting.
-											targetVersion = "py39",             -- The minimum python version to target (applies for both linting and formatting).
+											preview = true, -- Whether to enable the preview style linting and formatting.
+											targetVersion = "py39", -- The minimum python version to target (applies for both linting and formatting).
 										},
 										jedi = {
 											environment = python_exe,
@@ -164,9 +165,9 @@ return {
 									"$MODULAR_PATH/bazel-bin/SDK/lib/API/python:$MODULAR_PATH/SDK/lib/API/python:$MODULAR_PATH/SDK/public/max-repo/pipelines/python")
 								config.env = config.env or {}
 								config.env.PYTHONPATH = ((config.env.PYTHONPATH and (config.env.PYTHONPATH .. ":")) or "") ..
-										path_to_append
+								    path_to_append
 								config.env.MYPYPATH = ((config.env.MYPYPATH and (config.env.MYPYPATH .. ":")) or "") ..
-										path_to_append
+								    path_to_append
 							end
 						}
 
@@ -191,18 +192,6 @@ return {
 								root_dir = lspconfig.util.root_pattern('.git'),
 							},
 						}
-						local capabilities = vim.lsp.protocol.make_client_capabilities()
-						lspconfig.modular.setup({
-							capabilities = capabilities,
-							on_attach =
-									on_attach
-						})
-						lspconfig.mojo.setup({ capabilities = capabilities, on_attach = on_attach })
-						lspconfig.tablegen.setup({
-							capabilities = capabilities,
-							on_attach =
-									on_attach
-						})
 					end
 				end,
 			})
