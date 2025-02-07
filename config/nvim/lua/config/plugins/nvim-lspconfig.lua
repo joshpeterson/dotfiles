@@ -21,7 +21,8 @@ return {
 
 			servers = {
 				lua_ls = {},
-				clangd = {}
+				clangd = {},
+				mojo = {},
 			}
 		},
 		config = function(_, opts)
@@ -76,7 +77,7 @@ return {
 					end, { desc = 'Format current buffer with LSP' })
 
 					vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-						pattern = { "*.cpp", "*.h", "*.mojo", "*.py", "*.lua", },
+						pattern = { "*.cpp", "*.h", "*.mojo", "*.lua", },
 						callback = function()
 							if client.supports_method("textDocument/formatting") then
 								vim.lsp.buf.format()
