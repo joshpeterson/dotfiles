@@ -144,3 +144,6 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="$PATH:/Users/josh/.modular/bin"
+
+# Created by `pipx` on 2025-01-22 15:10:44
+export PATH="$PATH:/Users/josh/.local/bin"
