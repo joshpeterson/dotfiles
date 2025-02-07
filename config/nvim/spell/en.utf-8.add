@@ -33,3 +33,11 @@ bfloat16
 CPUs
 CUDA
 GPUs
+OpaqueLoc
+bytecode
+GEX
+ManagedTensorSlice
+UnsafePointer
+Args
+TensorLike
+invariants
