@@ -112,6 +112,7 @@ set --export NNN_FIFO "/tmp/nnn.fifo"
 #FZF
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --exclude external'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_COMPLETION_TRIGGER=';;'
 
 # Ripgrep
 export RIPGREP_CONFIG_PATH="/Users/josh/.config/rg.config"
@@ -147,3 +148,12 @@ export PATH="$PATH:/Users/josh/.modular/bin"
 
 # Created by `pipx` on 2025-01-22 15:10:44
 export PATH="$PATH:/Users/josh/.local/bin"
+
+# Bazel code completion with fzf based on https://blog.jez.io/fzf-bazel/
+# Modified for my own use
+_fzf_complete_bazel() {
+	_fzf_complete '-m' "$@" < <(bazel query "//...")
+}
+
+_fzf_complete_bt() { _fzf_complete_bazel "$@" }
+_fzf_complete_bb() { _fzf_complete_bazel "$@" }
