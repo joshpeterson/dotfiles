@@ -152,7 +152,7 @@ export PATH="$PATH:/Users/josh/.local/bin"
 # Bazel code completion with fzf based on https://blog.jez.io/fzf-bazel/
 # Modified for my own use
 _fzf_complete_bazel() {
-	_fzf_complete '-m' "$@" < <(bazel query "//...")
+	_fzf_complete '-m' "$@" < <(./bazelw query "//...") 2> /dev/null
 }
 
 _fzf_complete_bt() { _fzf_complete_bazel "$@" }
