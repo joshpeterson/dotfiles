@@ -113,6 +113,9 @@ set --export NNN_FIFO "/tmp/nnn.fifo"
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --exclude external'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# Ripgrep
+export RIPGREP_CONFIG_PATH="/Users/josh/.config/rg.config"
+
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
 # users are encouraged to define aliases within a top-level file in
