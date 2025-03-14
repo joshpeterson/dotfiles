@@ -1,2 +1,21 @@
 settings set stop-line-count-before 15
 settings set stop-line-count-after 15
+
+# This alias will accept an address and output the memory at that address
+# plus 48 bytes before it and 48 bytes after it.
+#
+# Usage:
+#
+# (lldb) mem 0x00007ffff7953284
+# 0x7ffff7953254: 18 40 5b 7b 22 6c 61 62 65 6c 22 3a 22 63 70 75  .@[{"label":"cpu
+# 0x7ffff7953264: 22 2c 22 69 64 22 3a 30 7d 5d 03 40 6d 6f 66 a0  ","id":0}].@mof.
+# 0x7ffff7953274: 05 00 01 02 8b 02 06 06 04 40 74 69 6c 65 14 cb  .........@tile..
+# 0x7ffff7953284: 00 00 00 00 15 40 72 65 73 75 6c 74 5f 64 65 76  .....@result_dev
+# 0x7ffff7953294: 69 63 65 5f 69 6e 64 69 63 65 73 01 80 1d 01 60  ice_indices....`
+# 0x7ffff79532a4: 1a 03 cb cb cb cb cb cb 58 f5 82 05 7f 45 4c 46  ........X....ELF
+# 0x7ffff79532b4: 02 01 01 00 00 00 00 00 00 00 00 00 01 00 3e 00  ..............>.
+#
+# Note that we need to use a regex here, not an alias, to get the `%1-0x30`
+# to parse correctly. See https://stackoverflow.com/a/12195343 for details.
+#
+command regex mem 's/(.+)/memory read --format Y --count 112 %1-0x30/'
