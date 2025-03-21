@@ -115,7 +115,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_COMPLETION_TRIGGER=';;'
 
 # Ripgrep
-export RIPGREP_CONFIG_PATH="/Users/josh/.config/rg.config"
+export RIPGREP_CONFIG_PATH="$HOME/.config/rg.config"
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
