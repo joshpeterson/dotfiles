@@ -149,6 +149,36 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
+  {
+    'stevearc/conform.nvim',
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
+    opts = {
+      notify_on_error = false,
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_fallback = true,
+      },
+      formatters_by_ft = {
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        typescriptreact = { 'prettier' },
+        vue = { 'prettier' },
+        css = { 'prettier' },
+        scss = { 'prettier' },
+        less = { 'prettier' },
+        html = { 'prettier' },
+        json = { 'prettier' },
+        yaml = { 'prettier' },
+        markdown = { 'prettier' },
+        graphql = { 'prettier' },
+        lua = { 'stylua' },
+        python = { 'isort', 'black' },
+      },
+    },
+  },
+
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -493,7 +523,7 @@ local on_attach = function(client, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 
   vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    pattern = { "*.cpp", "*.h", "*.mojo", "*.py", "*.lua", },
+    pattern = { "*.cpp", "*.h", "*.mojo", "*.py", "*.lua" },
     callback = function()
       if client.supports_method("textDocument/formatting") then
         vim.lsp.buf.format()
