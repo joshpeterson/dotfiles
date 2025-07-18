@@ -673,8 +673,8 @@ require("telescope").load_extension("notify")
 -- vim: ts=2 sts=2 sw=2 et
 
 -- Auto-reload files when they change on disk
-vim.o.autoread = true
-vim.api.nvim_create_autocmd({ "BufWinEnter", "CursorHold" }, {
+nvim.o.autoread = true
+nvim.api.nvim_create_autocmd({ "BufWinEnter", "CursorHold" }, {
   pattern = "*",
-  command = "checktime",
+  command = "silent! checktime",
 })
