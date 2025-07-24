@@ -11,12 +11,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      -- Add mojo to the servers list
-      opts.servers = opts.servers or {}
-      opts.servers.mojo = {}
-      return opts
-    end,
-    config = function(_, opts)
       -- Configure the custom mojo LSP server
       local lspconfig = require("lspconfig")
       local configs = require("lspconfig.configs")
@@ -26,16 +20,19 @@ return {
           default_config = {
             cmd = { "mojo-lsp-server" },
             filetypes = { "mojo" },
-            root_dir = lspconfig.util.root_pattern(".git", ".mojo"),
+            root_dir = lspconfig.util.root_pattern(".git", ".mojo", "pyproject.toml", "setup.py"),
             name = "mojo",
+            autostart = true,
           },
         }
       end
 
-      -- Let LazyVim handle the server setup
-      require("lazyvim.util").lsp.on_attach(function(client, buffer)
-        -- Additional mojo-specific setup if needed
-      end, "mojo")
+      -- Add mojo to the servers list with autostart enabled
+      opts.servers = opts.servers or {}
+      opts.servers.mojo = {
+        autostart = true,
+      }
+      return opts
     end,
   },
 

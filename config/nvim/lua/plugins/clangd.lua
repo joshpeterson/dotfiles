@@ -6,6 +6,7 @@ return {
         clangd = {
           -- Explicitly set filetypes to ensure clangd starts for C++ files
           filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+          autostart = true,
           -- Ensure clangd starts in any directory with a .git folder or C++ files
           root_dir = function(fname)
             local util = require("lspconfig.util")
