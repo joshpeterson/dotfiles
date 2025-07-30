@@ -146,6 +146,8 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export PATH="$PATH:/Users/josh/.modular/bin"
 
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
 # Created by `pipx` on 2025-01-22 15:10:44
 export PATH="$PATH:/Users/josh/.local/bin"
 
