@@ -1,1 +1,0 @@
-/Users/josh/code/modular/utils/mojo/vim/autoload/mojo.vim
