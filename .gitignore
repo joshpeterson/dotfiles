@@ -7,3 +7,4 @@ tags
 *config/configstore*
 htoprc
 karabiner_*.json
+**/.claude/settings.local.json
