@@ -8,6 +8,8 @@ return {
           preset = "vertical",
         },
       },
+      scope = { enabled = false }, -- Disable scope to avoid conflicts with diffview
+      indent = { enabled = false }, -- Disable indent guides to avoid window conflicts
     },
   },
 }
