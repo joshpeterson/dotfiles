@@ -11,6 +11,11 @@ font-feature = calt
 # Fixes alt-right arrow for zellij
 macos-option-as-alt = true
 
+# Enable mouse support for selecting text in nested applications
+mouse-hide-while-typing = true
+mouse-shift-capture = false
+copy-on-select = true
+
 # Disable quit confirmation
 confirm-close-surface = false
 

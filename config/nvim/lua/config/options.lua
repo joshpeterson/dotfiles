@@ -4,3 +4,9 @@
 
 -- Use absolute line numbers
 vim.opt.relativenumber = false
+
+-- Enable mouse support
+vim.opt.mouse = "a"
+
+-- Enable system clipboard integration
+vim.opt.clipboard = "unnamedplus"
