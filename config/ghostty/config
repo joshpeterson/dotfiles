@@ -1,6 +1,7 @@
 # Ghostty configuration for macOS
 
-theme = catppuccin-frappe
+theme = Catppuccin Frappe
+
 
 # Font settings
 font-family = FiraCode Nerd Font Mono
