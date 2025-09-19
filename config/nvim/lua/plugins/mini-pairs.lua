@@ -1,7 +1,7 @@
 -- Disable automatic pairing of quotes, brackets, etc.
 return {
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     enabled = false,
   },
 }
