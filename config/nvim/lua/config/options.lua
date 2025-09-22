@@ -9,4 +9,4 @@ vim.opt.relativenumber = false
 vim.opt.mouse = "a"
 
 -- Enable system clipboard integration
-vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamedplus" -- Disabled in favor of OSC 52
