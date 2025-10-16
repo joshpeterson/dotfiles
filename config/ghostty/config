@@ -15,10 +15,14 @@ macos-option-as-alt = true
 # Enable mouse support for selecting text in nested applications
 mouse-hide-while-typing = true
 mouse-shift-capture = false
-copy-on-select = true
+copy-on-select = clipboard
 
 # Disable quit confirmation
 confirm-close-surface = false
 
 keybind = alt+left=unbind
 keybind = alt+right=unbind
+
+# Get copy working with ssh OSC 52
+clipboard-read = allow
+clipboard-write = allow
