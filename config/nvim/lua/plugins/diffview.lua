@@ -4,6 +4,7 @@ return {
   keys = {
     { "<leader>dv", "<cmd>DiffviewOpen<cr>", desc = "Open Diffview" },
     { "<leader>df", "<cmd>DiffviewFileHistory<cr>", desc = "File History Diff" },
+    { "<leader>dc", "<cmd>DiffviewClose<cr>", desc = "Close Diffview" },
   },
   opts = {
     view = {
