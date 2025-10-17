@@ -3,7 +3,7 @@
 	email = josh@modular.com
 [diff]
 	compactionHeuristic = true
-	tool = bc
+	tool = diffview
 	colorMoved = default
 [interactive]
     	diffFilter = delta --color-only
@@ -31,13 +31,13 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[difftool "bc"]
-	trustExitCode = true
+[difftool "diffview"]
+	cmd = nvim -d "$LOCAL" "$REMOTE"
 [merge]
 	conflictstyle = diff3
-	tool = bc
-[mergetool "bc"]
-	trustExitCode = true
+	tool = diffview
+[mergetool "diffview"]
+	cmd = nvim -n -c "DiffviewOpen" "$MERGE"
 [remote "origin"]
 	prune = true
 [delta]
