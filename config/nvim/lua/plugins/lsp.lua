@@ -18,19 +18,6 @@ return {
 
       -- Setup lspconfig
       local lspconfig = require("lspconfig")
-      local configs = require("lspconfig.configs")
-
-      -- Configure custom Mojo LSP if not already defined
-      if not configs.mojo then
-        configs.mojo = {
-          default_config = {
-            cmd = { vim.env.HOME .. "/code/modular/.derived/build/bin/mojo-lsp-server" },
-            filetypes = { "mojo" },
-            root_dir = lspconfig.util.root_pattern(".git", ".mojo", "pyproject.toml", "setup.py"),
-            single_file_support = true,
-          },
-        }
-      end
 
       -- Configure clangd for C/C++
       lspconfig.clangd.setup({
@@ -92,4 +79,3 @@ return {
     end,
   },
 }
-
