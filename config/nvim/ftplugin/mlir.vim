@@ -1,0 +1,1 @@
+/opt/homebrew/opt/llvm/share/vim/vimfiles/ftplugin/mlir.vim
