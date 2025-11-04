@@ -7,6 +7,11 @@ return {
           -- Use a vertical layout with preview below
           preset = "vertical",
         },
+        sources = {
+          explorer = {
+            hidden = true, -- Show hidden files by default
+          },
+        },
       },
       scope = { enabled = false }, -- Disable scope to avoid conflicts with diffview
       indent = { enabled = false }, -- Disable indent guides to avoid window conflicts
