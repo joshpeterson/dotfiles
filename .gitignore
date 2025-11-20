@@ -9,3 +9,7 @@ htoprc
 karabiner_*.json
 **/.claude/settings.local.json
 config/github-copilot/apps.json
+
+# NVIDIA Nsight Systems files
+config/NVIDIA Corporation/
+config/com.nvidia.devtools/
