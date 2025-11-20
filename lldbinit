@@ -22,3 +22,6 @@ command regex mem 's/(.+)/memory read --format Y --count 112 %1-0x30/'
 
 # Disable the status line because it does not play nicely with zellij
 settings set show-statusline false
+
+# Load external symbol files automatically if available
+settings set symbols.enable-external-lookup true
