@@ -13,7 +13,7 @@ return {
       -- Setup mason first
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "clangd", "pyright" },
+        ensure_installed = { "clangd", "ruff" }, -- Switched from pyright to ruff
       })
 
       -- Setup lspconfig
@@ -40,8 +40,8 @@ return {
         },
       })
 
-      -- Configure pyright for Python
-      lspconfig.pyright.setup({
+      -- Configure ruff for Python (much faster than pyright)
+      lspconfig.ruff.setup({
         filetypes = { "python" },
         root_dir = lspconfig.util.root_pattern(
           "pyproject.toml",
@@ -49,16 +49,17 @@ return {
           "setup.cfg",
           "requirements.txt",
           "Pipfile",
-          "pyrightconfig.json",
           ".git"
         ),
-        settings = {
-          python = {
-            analysis = {
-              autoSearchPaths = true,
-              diagnosticMode = "workspace",
-              useLibraryCodeForTypes = true,
-              typeCheckingMode = "basic",
+        init_options = {
+          settings = {
+            -- Ruff configuration
+            lineLength = 88,
+            lint = {
+              enable = true,
+            },
+            format = {
+              enable = true,
             },
           },
         },
