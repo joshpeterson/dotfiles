@@ -11,6 +11,9 @@ return {
           explorer = {
             hidden = true, -- Show hidden files by default
           },
+          files = {
+            hidden = true, -- Show hidden files in file picker
+          },
         },
       },
       scope = { enabled = false }, -- Disable scope to avoid conflicts with diffview
