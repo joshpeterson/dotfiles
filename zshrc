@@ -128,6 +128,8 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/rg.config"
 alias ls=lsd
 alias vim=nvim
 alias sm="source utils/start-modular.sh"
+[[ -f utils/start-modular.sh ]] && source utils/start-modular.sh
+
 alias ibb="ibazel -bazel_path ./bazelw build"
 alias ibt="ibazel -bazel_path ./bazelw test --test_summary=terse"
 
