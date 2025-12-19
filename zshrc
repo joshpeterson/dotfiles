@@ -135,6 +135,18 @@ alias ibt="ibazel -bazel_path ./bazelw test --test_summary=terse"
 
 alias bri="bt install;./bazel/generate-compile-commands.sh"
 
+main() {
+  tmuxinator start main
+}
+
+dev() {
+  tmuxinator start dev -n "macOS Dev $1" workspace=modular-dev-$1
+}
+
+remote() {
+  tmuxinator start remote -n "$1" remote=$1
+}
+
 source <(fzf --zsh)
 
 # This way the completion script does not have to parse Bazel's options
