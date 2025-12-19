@@ -2,7 +2,6 @@
 
 name: dev
 root: ~/code/<%= @settings["workspace"] %>
-#root: ~/code/modular-dev-2
 
 # Optional tmux socket
 # socket_name: foo
