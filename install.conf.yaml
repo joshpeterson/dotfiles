@@ -8,5 +8,8 @@
     ~/.config:
         path: config/
         create: true
+    ~/.claude/settings.json:
+        path: config/claude/settings.json
+        create: true
 
 
