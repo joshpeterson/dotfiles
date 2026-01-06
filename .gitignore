@@ -13,3 +13,6 @@ config/github-copilot/apps.json
 # NVIDIA Nsight Systems files
 config/NVIDIA Corporation/
 config/com.nvidia.devtools/
+
+# tmux debug logs
+tmux-client-*.log
