@@ -174,3 +174,5 @@ _fzf_complete_bazel() {
 _fzf_complete_bt() { _fzf_complete_bazel "$@" }
 _fzf_complete_bb() { _fzf_complete_bazel "$@" }
 export PATH="$HOME/.local/bin:$PATH"
+
+export PATH="/Users/josh/.pixi/bin:$PATH"
