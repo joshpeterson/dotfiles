@@ -136,15 +136,15 @@ alias ibt="ibazel -bazel_path ./bazelw test --test_summary=terse"
 alias bri="bt install;./bazel/generate-compile-commands.sh"
 
 main() {
-  tmuxinator start main
+  tmuxinator start main -n "🏗️ Main"
 }
 
 dev() {
-  tmuxinator start dev -n "macOS Dev $1" workspace=modular-dev-$1
+  tmuxinator start dev -n " macOS Dev $1" workspace=modular-dev-$1
 }
 
 remote() {
-  tmuxinator start remote -n "$1" remote=$1
+  tmuxinator start remote -n "🐧 $1" remote=$1
 }
 
 source <(fzf --zsh)
