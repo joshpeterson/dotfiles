@@ -1,7 +1,7 @@
 # /Users/josh/.config/tmuxinator/whatsfordinner.yml
 
 name: whatsfordinner
-root: ~/
+root: ~/code/whatsfordinner
 
 # Optional tmux socket
 # socket_name: foo
@@ -45,22 +45,16 @@ root: ~/
 # attach: false
 
 windows:
-  - Editor:
-      layout: 40b3,362x94,0,0{181x94,0,0,2,180x94,182,0[180x47,182,0,3,180x46,182,48,4]}
-      root: ~/code/whatsfordinner
-      panes:
-        - nvim
-        - bundle exec guard
-        - git st
+  - Dev:
+      - nvim
+  - Gemini:
+      - gemini
+  - Scratch:
   - Git:
-      root: ~/code/whatsfordinner
-      panes:
-        - lazygit
-  - Rails: 
+      - lazygit
+  - Dev:
       layout: even-vertical
-      root: ~/code/whatsfordinner
       panes:
         - bundle exec rails s
         - tail -f log/development.log
-  - Scratch:
-      root: ~/code/whatsfordinner
+  - Staging:
