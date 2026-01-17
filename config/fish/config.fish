@@ -24,3 +24,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Created by `pipx` on 2023-08-15 10:09:22
 set PATH $PATH /Users/josh/.local/bin
+fish_add_path $HOME/.local/bin
+
+# Added by tally installer
+fish_add_path $HOME/.tally/bin
