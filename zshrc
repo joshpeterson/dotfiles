@@ -176,3 +176,6 @@ _fzf_complete_bb() { _fzf_complete_bazel "$@" }
 export PATH="$HOME/.local/bin:$PATH"
 
 export PATH="/Users/josh/.pixi/bin:$PATH"
+
+# opencode
+export PATH=/Users/josh/.opencode/bin:$PATH
