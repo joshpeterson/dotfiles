@@ -143,6 +143,36 @@ dev() {
   tmuxinator start dev -n " macOS Dev $1" workspace=modular-dev-$1
 }
 
+# Create a new git worktree with branch josh/<name> and open in tmux
+wt() {
+  local name="$1"
+  if [[ -z "$name" ]]; then
+    echo "Usage: wt <worktree-name>"
+    return 1
+  fi
+
+  # Get the repo root (works from any subdirectory)
+  local repo_root
+  repo_root=$(git rev-parse --show-toplevel 2>/dev/null) || {
+    echo "Error: Not in a git repository"
+    return 1
+  }
+
+  local worktree_path="$HOME/code/$name"
+  local branch_name="josh/$name"
+
+  # Create the worktree with the prefixed branch name
+  git worktree add "$worktree_path" -b "$branch_name" || {
+    echo "Error: Failed to create worktree"
+    return 1
+  }
+
+  echo "Created worktree at $worktree_path with branch $branch_name"
+
+  # Open tmux session (pass full workspace name without modular-dev- prefix)
+  tmuxinator start dev -n "🌳 $name" workspace="$name"
+}
+
 remote() {
   tmuxinator start remote -n "🐧 $1" remote=$1
 }
