@@ -173,6 +173,52 @@ wt() {
   tmuxinator start dev -n "🌳 $name" workspace="$name"
 }
 
+# Delete a git worktree and its associated tmux session
+wt-rm() {
+  local name="$1"
+  if [[ -z "$name" ]]; then
+    echo "Usage: wt-rm <worktree-name>"
+    return 1
+  fi
+
+  local worktree_path="$HOME/code/$name"
+  local branch_name="josh/$name"
+  local session_name="🌳 $name"
+
+  # Kill tmux session if it exists
+  if tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux kill-session -t "$session_name"
+    echo "Killed tmux session: $session_name"
+  fi
+
+  # Remove the worktree
+  if [[ -d "$worktree_path" ]]; then
+    git worktree remove "$worktree_path" || {
+      echo "Error: Failed to remove worktree (maybe it has uncommitted changes?)"
+      echo "Use 'git worktree remove --force $worktree_path' to force removal"
+      return 1
+    }
+    echo "Removed worktree: $worktree_path"
+  else
+    echo "Worktree not found: $worktree_path"
+  fi
+
+  # Delete the branch
+  git branch -d "$branch_name" 2>/dev/null && echo "Deleted branch: $branch_name"
+}
+
+# List worktrees for the current git repo
+wt-ls() {
+  git worktree list 2>/dev/null | while read -r wt_path rest; do
+    local wt_name="${wt_path:t}"
+    local has_session=" "
+    if tmux has-session -t "🌳 $wt_name" 2>/dev/null; then
+      has_session="🌳"
+    fi
+    echo "$has_session $wt_name  ($wt_path)"
+  done
+}
+
 remote() {
   tmuxinator start remote -n "🐧 $1" remote=$1
 }
