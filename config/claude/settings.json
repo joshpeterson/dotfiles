@@ -6,6 +6,9 @@
     "lastShownTime": 1754068433215
   },
   "permissions": {
+    "additionalDirectories": [
+      "~/Library/Caches/bazel"
+    ],
     "allow": [
       "Bash(ls:*)",
       "Bash(find:*)",
