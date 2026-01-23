@@ -185,6 +185,12 @@ wt-rm() {
   local branch_name="josh/$name"
   local session_name="🌳 $name"
 
+  # Get the main repo path from the worktree before we delete it
+  local main_repo
+  if [[ -d "$worktree_path" ]]; then
+    main_repo=$(git -C "$worktree_path" worktree list | head -1 | cut -d' ' -f1)
+  fi
+
   # Kill tmux session if it exists
   if tmux has-session -t "$session_name" 2>/dev/null; then
     tmux kill-session -t "$session_name"
@@ -193,7 +199,7 @@ wt-rm() {
 
   # Remove the worktree
   if [[ -d "$worktree_path" ]]; then
-    git worktree remove "$worktree_path" || {
+    git -C "$worktree_path" worktree remove "$worktree_path" || {
       echo "Error: Failed to remove worktree (maybe it has uncommitted changes?)"
       echo "Use 'git worktree remove --force $worktree_path' to force removal"
       return 1
@@ -203,8 +209,10 @@ wt-rm() {
     echo "Worktree not found: $worktree_path"
   fi
 
-  # Delete the branch
-  git branch -d "$branch_name" 2>/dev/null && echo "Deleted branch: $branch_name"
+  # Delete the branch from the main repo
+  if [[ -n "$main_repo" ]]; then
+    git -C "$main_repo" branch -D "$branch_name" 2>/dev/null && echo "Deleted branch: $branch_name"
+  fi
 }
 
 # List worktrees for the current git repo
