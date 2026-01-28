@@ -199,6 +199,9 @@ wt-rm() {
 
   # Remove the worktree
   if [[ -d "$worktree_path" ]]; then
+    # Clean bazel cache for this worktree
+    (cd "$worktree_path" && bazel clean --expunge 2>/dev/null)
+
     git -C "$worktree_path" worktree remove "$worktree_path" || {
       echo "Error: Failed to remove worktree (maybe it has uncommitted changes?)"
       echo "Use 'git worktree remove --force $worktree_path' to force removal"
