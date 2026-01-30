@@ -266,3 +266,6 @@ export PATH="/Users/josh/.pixi/bin:$PATH"
 
 # opencode
 export PATH=/Users/josh/.opencode/bin:$PATH
+
+# nnn file manager
+export PATH="$HOME/code/nnn:$PATH"
