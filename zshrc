@@ -246,6 +246,13 @@ wt-ls() {
   done
 }
 
+_wt_completions() {
+  local -a worktrees
+  worktrees=(${(f)"$(git worktree list 2>/dev/null | tail -n +2 | while read -r wt_path rest; do echo "${wt_path:t}"; done)"})
+  compadd -- $worktrees
+}
+compdef _wt_completions wt-rm wt-connect
+
 remote() {
   tmuxinator start remote -n "🐧 $1" remote=$1
 }
