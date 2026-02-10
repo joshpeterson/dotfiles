@@ -1,14 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "model": "opus",
-  "alwaysThinkingEnabled": true,
-  "feedbackSurveyState": {
-    "lastShownTime": 1754068433215
-  },
   "permissions": {
-    "additionalDirectories": [
-      "~/Library/Caches/bazel"
-    ],
     "allow": [
       "Bash(ls:*)",
       "Bash(find:*)",
@@ -59,6 +51,11 @@
       "WebSearch",
       "WebFetch"
     ],
+    "deny": [
+      "Bash(dd:*)",
+      "Bash(mkfs:*)",
+      "Bash(fdisk:*)"
+    ],
     "ask": [
       "Bash(rm:*)",
       "Bash(rmdir:*)",
@@ -73,11 +70,14 @@
       "Bash(killall:*)",
       "Bash(pkill:*)"
     ],
-    "deny": [
-      "Bash(dd:*)",
-      "Bash(mkfs:*)",
-      "Bash(fdisk:*)"
-    ],
-    "defaultMode": "acceptEdits"
+    "defaultMode": "acceptEdits",
+    "additionalDirectories": [
+      "~/Library/Caches/bazel"
+    ]
+  },
+  "model": "opus",
+  "alwaysThinkingEnabled": true,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754068433215
   }
 }
