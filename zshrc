@@ -169,7 +169,23 @@ wt() {
 
   echo "Created worktree at $worktree_path with branch $branch_name"
 
-  # Open tmux session (pass full workspace name without modular-dev- prefix)
+  wt-connect "$name"
+}
+
+# Open a tmuxinator session for an existing worktree
+wt-connect() {
+  local name="$1"
+  if [[ -z "$name" ]]; then
+    echo "Usage: wt-connect <worktree-name>"
+    return 1
+  fi
+
+  local worktree_path="$HOME/code/$name"
+  if [[ ! -d "$worktree_path" ]]; then
+    echo "Error: Worktree not found at $worktree_path"
+    return 1
+  fi
+
   tmuxinator start dev -n "🌳 $name" workspace="$name"
 }
 
