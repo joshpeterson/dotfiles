@@ -11,5 +11,8 @@
     ~/.claude/settings.json:
         path: config/claude/settings.json
         create: true
+    ~/.claude/CLAUDE.md:
+        path: config/claude/CLAUDE.md
+        create: true
 
 
