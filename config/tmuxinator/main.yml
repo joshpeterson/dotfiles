@@ -51,10 +51,10 @@ windows:
       layout: even-horizontal
       panes:
         - nvim
-        - opencode
+        - claude
   - Tools:
       root: ~/code/joshpeterson-setup
       layout: even-horizontal
       panes:
         - nvim
-        - opencode
+        - claude

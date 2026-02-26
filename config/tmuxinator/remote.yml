@@ -48,7 +48,7 @@ windows:
   - Dev:
      - nvim
   - Claude:
-    - opencode
+    - claude
   - Test:
   - Git:
     - lazygit
