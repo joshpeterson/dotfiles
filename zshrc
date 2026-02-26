@@ -152,6 +152,27 @@ dev-linux() {
   tmuxinator start dev -n "🐧 Dev " workspace=modular
 }
 
+start() {
+  tmuxinator start main -n "🏗️ Main" --no-attach
+
+  if [[ "$(uname)" == "Linux" ]]; then
+    tmuxinator start dev -n "🐧 Dev " workspace=modular --no-attach
+    local repo_dir="$HOME/code/modular"
+  else
+    tmuxinator start dev -n " macOS Dev 1" workspace=modular-dev-1 --no-attach
+    tmuxinator start dev -n " macOS Dev 2" workspace=modular-dev-2 --no-attach
+    local repo_dir="$HOME/code/modular-dev-2"
+  fi
+
+  # Connect to each worktree (skip the main worktree)
+  git -C "$repo_dir" worktree list 2>/dev/null | tail -n +2 | while read -r wt_path rest; do
+    local wt_name="${wt_path:t}"
+    wt-connect "$wt_name"
+  done
+
+  tmux attach -t "🏗️ Main"
+}
+
 # Create a new git worktree with branch josh/<name> and open in tmux
 wt() {
   local name="$1"
