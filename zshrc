@@ -127,6 +127,11 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/rg.config"
 
 alias ls=lsd
 alias vim=nvim
+
+# On Linux Coder workspaces, skip permissions prompt automatically
+if [[ "$(uname)" == "Linux" && -n "$CODER_WORKSPACE_NAME" ]]; then
+  alias claude="claude --dangerously-skip-permissions"
+fi
 alias sm="source utils/start-modular.sh"
 [[ -f utils/start-modular.sh ]] && source utils/start-modular.sh
 

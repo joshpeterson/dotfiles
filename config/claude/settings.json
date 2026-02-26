@@ -79,5 +79,6 @@
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754068433215
-  }
+  },
+  "skipDangerousModePermissionPrompt": true
 }
