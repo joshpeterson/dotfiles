@@ -143,6 +143,10 @@ dev() {
   tmuxinator start dev -n " macOS Dev $1" workspace=modular-dev-$1
 }
 
+dev-linux() {
+  tmuxinator start dev -n "🐧 Dev " workspace=modular
+}
+
 # Create a new git worktree with branch josh/<name> and open in tmux
 wt() {
   local name="$1"
