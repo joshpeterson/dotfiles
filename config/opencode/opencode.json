@@ -1,4 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "theme": "catppuccin-frappe"
+  "theme": "catppuccin-frappe",
+  "mcp": {
+    "MealsMatter": {
+      "type": "remote",
+      "url": "http://localhost:3000/mcp"
+    }
+  }
 }
