@@ -1,7 +1,4 @@
-set -x JEROME_DATABASE_PASSWORD mydata
-set -x VCPKG_FORCE_SYSTEM_BINARIES 1
 set -x EDITOR nvim
-set -x MODULAR_HOME /Users/josh/.modular
 set -x PATH ~/bin ~/.rbenv/shims ~/.cargo/bin /Users/josh/.modular/pkg/packages.modular.com_mojo/bin $PATH
 
 set -g theme_newline_cursor yes
