@@ -4,7 +4,8 @@ root: ~/
 windows:
   - Scratch:
   - Config:
-      layout: even-vertical
+      root: ~/.dotfiles
+      layout: even-horizontal
       panes:
         - nvim
         - opencode

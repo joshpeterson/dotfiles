@@ -10,7 +10,4 @@ windows:
   - Git:
       - lazygit
   - Dev Server:
-      layout: even-vertical
-      panes:
-        - bin/dev
-        - tail -f log/development.log
+      - bin/dev
