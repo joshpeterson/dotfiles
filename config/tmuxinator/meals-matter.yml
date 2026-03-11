@@ -1,0 +1,16 @@
+name: meals-matter
+root: ~/code/meals-matter
+
+windows:
+  - Dev:
+      - nvim
+  - Agent:
+      - opencode
+  - Test:
+  - Git:
+      - lazygit
+  - Dev Server:
+      layout: even-vertical
+      panes:
+        - bin/dev
+        - tail -f log/development.log

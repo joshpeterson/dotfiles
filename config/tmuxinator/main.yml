@@ -1,0 +1,10 @@
+name: Main
+root: ~/
+
+windows:
+  - Scratch:
+  - Config:
+      layout: even-vertical
+      panes:
+        - nvim
+        - opencode
