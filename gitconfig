@@ -41,3 +41,7 @@
     side-by-side = true
 [merge]
     conflictstyle = diff3
+    tool = nvim
+[mergetool "nvim"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\" \"$BASE\" -c 'wincmd w' -c 'wincmd w'
+	trustExitCode = true
