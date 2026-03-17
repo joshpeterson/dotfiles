@@ -1,0 +1,13 @@
+name: fathers
+root: ~/code/voice-of-the-fathers
+
+windows:
+  - Dev:
+      - nvim
+  - Agent:
+      - opencode
+  - Test:
+  - Git:
+      - lazygit
+  - Dev Server:
+      - bundle exec jekyll serve --drafts
