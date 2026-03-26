@@ -10,4 +10,4 @@ windows:
   - Git:
       - lazygit
   - Dev Server:
-      - bundle exec jekyll serve --drafts
+      - npm run dev
