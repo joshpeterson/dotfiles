@@ -25,3 +25,10 @@ fish_add_path $HOME/.local/bin
 
 # Added by tally installer
 fish_add_path $HOME/.tally/bin
+
+# opencode
+fish_add_path /Users/josh/.opencode/bin
+
+# dotnet
+fish_add_path /usr/local/share/dotnet/
+fish_add_path /Users/josh/.dotnet/tools
