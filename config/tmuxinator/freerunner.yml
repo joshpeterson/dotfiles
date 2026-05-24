@@ -1,0 +1,13 @@
+name: Free Runner
+root: ~/code/freerunner
+
+windows:
+  - Dev:
+      layout: 40b3,362x94,0,0{181x94,0,0,2,180x94,182,0[180x47,182,0,3,180x46,182,48,4]}
+      panes:
+        - nvim
+        - opencode
+        -
+  - Test:
+  - Git:
+      - lazygit
