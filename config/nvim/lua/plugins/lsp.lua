@@ -5,9 +5,10 @@
        servers = {
          solargraph = {},
          tailwindcss = {},
-         ruby_lsp = {
-           filetypes = { "ruby" },
-         },
+          ruby_lsp = {
+            filetypes = { "ruby" },
+          },
+          dartls = {},
        },
      },
    },
