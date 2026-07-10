@@ -1,6 +1,6 @@
 # /home/josh/.config/tmuxinator/fun.yml
 
-name: fun
+name: Blog
 root: ~/
 
 # Optional tmux socket
@@ -45,13 +45,13 @@ root: ~/
 # attach: false
 
 windows:
-  - blaise:
+  - Dev:
       layout: 40b3,362x94,0,0{181x94,0,0,2,180x94,182,0[180x47,182,0,3,180x46,182,48,4]}
       root: ~/code/joshpeterson.github.io
       panes:
         - nvim
         - bundle exec jekyll serve --drafts
-        - git st
-  - nnn:
+        - opencode
+  - Files:
       - nnn
-  - scratch:
+  - Scratch:
