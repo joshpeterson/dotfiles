@@ -6,3 +6,8 @@ tags
 *vim/sessions*
 *config/configstore*
 config/stripe/config.toml
+config/hcloud/
+config/herdr/*.sock
+config/herdr/*.log
+config/herdr/session-snapshots/
+config/herdr/session.json
