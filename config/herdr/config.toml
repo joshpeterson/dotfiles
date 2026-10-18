@@ -2,3 +2,5 @@ onboarding = false
 
 [keys]
 prefix = "ctrl+s"
+split_vertical = ["prefix+v", "prefix+%"]
+split_horizontal = ["prefix+minus", "prefix+\""]
