@@ -4,3 +4,15 @@ onboarding = false
 prefix = "ctrl+s"
 split_vertical = ["prefix+v", "prefix+%"]
 split_horizontal = ["prefix+minus", "prefix+\""]
+
+[[keys.command]]
+key = "prefix+y"
+type = "shell"
+command = '~/.config/herdr/split-command.sh 0.35 lazygit'
+description = "lazygit in a right split (closes on exit)"
+
+[[keys.command]]
+key = "prefix+i"
+type = "shell"
+command = '~/.config/herdr/split-command.sh 0.5 nvim'
+description = "neovim in a right split (closes on exit)"
