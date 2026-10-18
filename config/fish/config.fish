@@ -27,7 +27,7 @@ fish_add_path $HOME/.local/bin
 fish_add_path $HOME/.tally/bin
 
 # opencode
-fish_add_path /Users/josh/.opencode/bin
+fish_add_path $HOME/.opencode/bin
 
 # dotnet
 fish_add_path /usr/local/share/dotnet/
