@@ -8,7 +8,7 @@ split_horizontal = ["prefix+minus", "prefix+\""]
 [[keys.command]]
 key = "prefix+y"
 type = "shell"
-command = '~/.config/herdr/split-command.sh 0.35 lazygit'
+command = '~/.config/herdr/split-command.sh 0.5 lazygit'
 description = "lazygit in a right split (closes on exit)"
 
 [[keys.command]]
