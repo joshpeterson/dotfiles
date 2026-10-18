@@ -1,1 +1,4 @@
 onboarding = false
+
+[keys]
+prefix = "ctrl+s"
