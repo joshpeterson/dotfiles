@@ -7,7 +7,10 @@ tags
 *config/configstore*
 config/stripe/config.toml
 config/hcloud/
-config/herdr/*.sock
+config/herdr/*.sock*
 config/herdr/*.log
+config/herdr/*.lock
 config/herdr/session-snapshots/
 config/herdr/session.json
+config/hey-cli/
+bin/hey
