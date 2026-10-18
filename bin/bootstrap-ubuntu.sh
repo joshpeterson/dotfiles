@@ -6,8 +6,8 @@
 # lazygit, oh-my-pi (omp)
 #
 # Safe to re-run: system packages are upgraded in place, user-local tools
-# are skipped if already installed. System packages use sudo; everything
-# else lands in ~/.local/bin.
+# are skipped if already installed. Also sets fish as the login shell.
+# System packages use sudo; everything else lands in ~/.local/bin.
 
 set -euo pipefail
 
@@ -32,6 +32,14 @@ sudo apt-get install -y -qq git ripgrep bat fd-find fish ruby-full curl
 # when the Ubuntu-specific binaries exist.
 command -v batcat >/dev/null && ln -sf "$(command -v batcat)" "$LOCAL_BIN/bat"
 command -v fdfind >/dev/null && ln -sf "$(command -v fdfind)" "$LOCAL_BIN/fd"
+
+echo "==> Setting fish as the default shell"
+login_shell=$(getent passwd "$USER" | cut -d: -f7)
+if [[ $login_shell == "$(command -v fish)" ]]; then
+    echo "    fish is already the login shell, skipping"
+else
+    sudo chsh -s "$(command -v fish)" "$USER"
+fi
 
 echo "==> Installing neovim (latest stable from GitHub)"
 latest=$(curl -fsSL https://api.github.com/repos/neovim/neovim/releases/latest \
@@ -85,6 +93,3 @@ case ":$ORIG_PATH:" in
         echo "  bash: echo 'export PATH=\"\$HOME/.local/bin:\$PATH\"' >> ~/.bashrc"
         ;;
 esac
-
-echo
-echo "To make fish your login shell: sudo chsh -s \$(which fish) \$USER"
