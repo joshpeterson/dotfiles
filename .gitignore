@@ -14,3 +14,4 @@ config/herdr/session-snapshots/
 config/herdr/session.json
 config/hey-cli/
 bin/hey
+config/fish/fish_variables
