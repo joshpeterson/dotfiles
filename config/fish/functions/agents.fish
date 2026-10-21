@@ -1,4 +1,4 @@
-function agents --description "Boot gandalf (Hetzner) and open herdr with Local + gandalf machines"
-    start; or return 1
+function agents --description "Boot a machine (default: $machines_default) and open herdr"
+    start $argv; or return 1
     herdr
 end

@@ -1,16 +1,24 @@
-function start --description "Boot gandalf (Hetzner) and wait for it over Tailscale"
-    set --local server gandalf
-    set --local target josh@gandalf # Tailscale MagicDNS name
-    set --local timeout 120 # seconds to wait for SSH to come up
+function start --description "Boot a machine (default: $machines_default) and wait for SSH over Tailscale"
+    set -l name $argv[1]
+    if test -z "$name"
+        set name $machines_default
+    end
 
-    switch (hcloud server describe $server --output json | jq -r .status)
+    set -l target (__machine $name target); or return 1
+    set -l timeout (__machine $name timeout)
+    if test -z "$timeout"
+        set timeout 120
+    end
+
+    switch (__machine_state $name)
         case running
-            echo "$server is already running"
+            echo "$name is already running"
         case off
-            echo "Powering on $server ..."
-            hcloud server poweron $server
+            echo "Powering on $name ..."
+            set -l cmd (__machine $name start)
+            sh -c "$cmd"
         case '*'
-            echo "$server is in an unexpected state (not running or off), aborting." >&2
+            echo "$name is in an unexpected power state, aborting." >&2
             return 1
     end
 
