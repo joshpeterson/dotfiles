@@ -10,13 +10,13 @@ resize_mode = "prefix+f"
 key = "prefix+y"
 type = "shell"
 command = '~/.config/herdr/split-command.sh 0.5 lazygit'
-description = "lazygit in a right split (closes on exit)"
+description = "lazygit in a right split, or a tab when narrow (closes on exit)"
 
 [[keys.command]]
 key = "prefix+i"
 type = "shell"
 command = '~/.config/herdr/split-command.sh 0.5 nvim'
-description = "neovim in a right split (closes on exit)"
+description = "neovim in a right split, or a tab when narrow (closes on exit)"
 
 [[keys.command]]
 key = "prefix+r"
