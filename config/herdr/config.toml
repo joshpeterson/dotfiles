@@ -4,6 +4,7 @@ onboarding = false
 prefix = "ctrl+s"
 split_vertical = ["prefix+v", "prefix+%"]
 split_horizontal = ["prefix+minus", "prefix+\""]
+resize_mode = "prefix+f"
 
 [[keys.command]]
 key = "prefix+y"
@@ -16,3 +17,9 @@ key = "prefix+i"
 type = "shell"
 command = '~/.config/herdr/split-command.sh 0.5 nvim'
 description = "neovim in a right split (closes on exit)"
+
+[[keys.command]]
+key = "prefix+r"
+type = "plugin_action"
+command = "persiyanov.reviewr.toggle"
+description = "reviewr: toggle pane"

@@ -12,6 +12,9 @@ config/herdr/*.log
 config/herdr/*.lock
 config/herdr/session-snapshots/
 config/herdr/session.json
+config/herdr/plugins.json
+config/herdr/plugins/github-installations/
+config/herdr/plugins/.locks/
 config/hey-cli/
 bin/hey
 config/fish/fish_variables
